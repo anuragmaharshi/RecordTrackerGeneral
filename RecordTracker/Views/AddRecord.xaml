@@ -54,9 +54,10 @@
 
                 
 
-                <!--Topic Area-->
-                <TextBlock Grid.Row="1" Grid.Column="3" Text="Topic/Area" Padding="5" />
-                <ComboBox  Grid.Row="1" Grid.Column="4" Padding="5" Name="TopicList" ItemsSource="{Binding TopicsAndAreas}" SelectedItem="{Binding SelectedTA}">
+                <!--Gamma-->
+                <TextBlock Grid.Row="1" Grid.Column="3" Text="Gamma" Padding="5" />
+                <ComboBox  Grid.Row="1" Grid.Column="4" Padding="5" Name="GammaList" 
+                           ItemsSource="{Binding Gammas}" SelectedItem="{Binding SelectedGamma}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}"/>
@@ -77,12 +78,12 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
 
-                <!--Subject-->
-                <TextBlock Grid.Row="2" Grid.Column="3" Text="Subject" Padding="5" />
+                <!--Theta-->
+                <TextBlock Grid.Row="2" Grid.Column="3" Text="Theta" Padding="5" />
 
                 <ComboBox  Grid.Row="2" Grid.Column="4" Padding="5"  
-                            ItemsSource="{Binding Subjects}"
-                           SelectedItem="{Binding SelectedSubject}">
+                            ItemsSource="{Binding Thetas}"
+                           SelectedItem="{Binding SelectedTheta}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}"/>
@@ -90,12 +91,12 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
 
-                <!--Source-->
-                <TextBlock Grid.Row="3" Grid.Column="1" Text="Source" Padding="5" />
+                <!--Delta-->
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="Delta" Padding="5" />
 
                 <ComboBox  Grid.Row="3" Grid.Column="2" Padding="5"  
-                            ItemsSource="{Binding Sources}"
-                           SelectedItem="{Binding SelectedSource}">
+                            ItemsSource="{Binding Deltas}"
+                           SelectedItem="{Binding SelectedDelta}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}"/>
@@ -141,9 +142,11 @@
                 <TextBlock Grid.Row="4" Grid.Column="3" Text="Ofice Dispatch Number" Padding="5" />
                 <TextBox Grid.Row="4" Grid.Column="4"  Text="{Binding OfficeDispatchNumber,Mode=TwoWay}"/>
 
-                <!--Police station-->
-                <TextBlock Grid.Row="5" Grid.Column="1" Text="Police Station"  Padding="5"/>
-                <ComboBox Grid.Row="5" Grid.Column="2" Padding="5" Name="PSList"  ItemsSource="{Binding PoliceStations}" SelectedItem="{Binding SelectedPS ,Mode=TwoWay}">
+                <!--Beta-->
+                <TextBlock Grid.Row="5" Grid.Column="1" Text="Beta"  Padding="5"/>
+                <ComboBox Grid.Row="5" Grid.Column="2" Padding="5" Name="BetaList"  
+                          ItemsSource="{Binding Betas}" 
+                          SelectedItem="{Binding SelectedBeta ,Mode=TwoWay}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}"/>

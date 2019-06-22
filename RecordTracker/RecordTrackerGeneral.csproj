@@ -137,43 +137,43 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\CreatePDFDataGrid.cs" />
-    <Compile Include="Services\ISourceRepository.cs" />
-    <Compile Include="Services\ISubjectRepository.cs" />
+    <Compile Include="Services\IDeltaRepository.cs" />
+    <Compile Include="Services\IThetaRepository.cs" />
     <Compile Include="Services\RecordRepository.cs" />
     <Compile Include="Services\IRecordRepository.cs" />
-    <Compile Include="Services\ITopicAndAreaRepository.cs" />
-    <Compile Include="Services\SourceRepository.cs" />
+    <Compile Include="Services\IGammaRepository.cs" />
+    <Compile Include="Services\DeltaRepository.cs" />
     <Compile Include="Services\StatusRepository.cs" />
-    <Compile Include="Services\SubjectRepository.cs" />
-    <Compile Include="Services\TopicAndAreaRepository.cs" />
+    <Compile Include="Services\ThetaRepository.cs" />
+    <Compile Include="Services\GammaRepository.cs" />
     <Compile Include="SqliteDataLayer\DataLayerContext.cs" />
     <Compile Include="SqliteDataLayer\LetterRecord.cs" />
     <Compile Include="SqliteDataLayer\Alpha.cs" />
-    <Compile Include="SqliteDataLayer\PoliceStation.cs" />
-    <Compile Include="SqliteDataLayer\Source.cs" />
+    <Compile Include="SqliteDataLayer\Beta.cs" />
+    <Compile Include="SqliteDataLayer\Delta.cs" />
     <Compile Include="SqliteDataLayer\SQLiteConfiguration.cs" />
     <Compile Include="SqliteDataLayer\Status.cs" />
-    <Compile Include="SqliteDataLayer\Subject.cs" />
-    <Compile Include="SqliteDataLayer\TopicsAndArea.cs" />
+    <Compile Include="SqliteDataLayer\Theta.cs" />
+    <Compile Include="SqliteDataLayer\Gamma.cs" />
     <Compile Include="ViewModel\AddRecordViewModel.cs" />
     <Compile Include="ViewModel\RecordsReportViewModel.cs" />
-    <Compile Include="ViewModel\SourceListViewModel.cs" />
-    <Compile Include="ViewModel\SubjectListViewModel.cs" />
-    <Compile Include="ViewModel\TopicAndAreaListViewModel.cs" />
+    <Compile Include="ViewModel\DeltaListViewModel.cs" />
+    <Compile Include="ViewModel\ThetaListViewModel.cs" />
+    <Compile Include="ViewModel\GammaListViewModel.cs" />
     <Compile Include="Views\AddRecord.xaml.cs">
       <DependentUpon>AddRecord.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PoliceStationList.xaml.cs">
-      <DependentUpon>PoliceStationList.xaml</DependentUpon>
+    <Compile Include="Views\BetaList.xaml.cs">
+      <DependentUpon>BetaList.xaml</DependentUpon>
     </Compile>
     <Compile Include="RelayCommand.cs" />
     <Compile Include="Services\IAlphaRepository.cs" />
-    <Compile Include="Services\IPoliceStationRepository.cs" />
+    <Compile Include="Services\IBetaRepository.cs" />
     <Compile Include="Services\AlphaRepository.cs" />
-    <Compile Include="Services\PoliceStationRepository.cs" />
+    <Compile Include="Services\BetaRepository.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\AlphaListViewModel.cs" />
-    <Compile Include="ViewModel\PoliceStationListViewModel.cs" />
+    <Compile Include="ViewModel\BetaListViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\AplhaList.xaml.cs">
       <DependentUpon>AplhaList.xaml</DependentUpon>
@@ -181,14 +181,14 @@
     <Compile Include="Views\RecordsReport.xaml.cs">
       <DependentUpon>RecordsReport.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SourceList.xaml.cs">
-      <DependentUpon>SourceList.xaml</DependentUpon>
+    <Compile Include="Views\DeltaList.xaml.cs">
+      <DependentUpon>DeltaList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SubjectList.xaml.cs">
-      <DependentUpon>SubjectList.xaml</DependentUpon>
+    <Compile Include="Views\ThetaList.xaml.cs">
+      <DependentUpon>ThetaList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TopicAndAreaList.xaml.cs">
-      <DependentUpon>TopicAndAreaList.xaml</DependentUpon>
+    <Compile Include="Views\GammaList.xaml.cs">
+      <DependentUpon>GammaList.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -202,7 +202,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PoliceStationList.xaml">
+    <Page Include="Views\BetaList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,15 +214,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SourceList.xaml">
+    <Page Include="Views\DeltaList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SubjectList.xaml">
+    <Page Include="Views\ThetaList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TopicAndAreaList.xaml">
+    <Page Include="Views\GammaList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

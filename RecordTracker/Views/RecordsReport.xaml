@@ -69,10 +69,10 @@
                         <ColumnDefinition Width="10"/>
                     </Grid.ColumnDefinitions>
                     
-                    <!--Police Station-->
-                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Police Station" Padding="5" />
+                    <!--Beta-->
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Beta" Padding="5" />
                     <ComboBox Grid.Row="1" Grid.Column="2" Padding="5" BorderThickness="2" 
-                              Name="PSFilter" ItemsSource="{Binding PSFilter}" SelectedItem="{Binding SelectedPoliceStation}">
+                              Name="BetaFilter" ItemsSource="{Binding BetaFilter}" SelectedItem="{Binding SelectedBeta}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Name}"/>
@@ -80,10 +80,10 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
-                    <!--Topic Area-->
-                    <TextBlock Grid.Row="1" Grid.Column="3" Text="Topic/Area" Padding="5" />
-                    <ComboBox Grid.Row="1" Grid.Column="4" Padding="5" BorderThickness="2" Name="TopicFilter" 
-                              ItemsSource="{Binding TAFilter}" SelectedItem="{Binding SelectedTopic}">
+                    <!--Gamma-->
+                    <TextBlock Grid.Row="1" Grid.Column="3" Text="Gamma" Padding="5" />
+                    <ComboBox Grid.Row="1" Grid.Column="4" Padding="5" BorderThickness="2" Name="GammaFilter" 
+                              ItemsSource="{Binding GammaFilter}" SelectedItem="{Binding SelectedGamma}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Name}"/>
@@ -102,10 +102,10 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
-                    <!--Source-->
-                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Source" Padding="5"/>
+                    <!--Delta-->
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Delta" Padding="5"/>
                     <ComboBox Grid.Row="2" Grid.Column="2" Padding="5" Margin="0,5,0,0"  BorderThickness="2" 
-                        ItemsSource="{Binding SrcFilter}" SelectedItem="{Binding SelectedSource}">
+                        ItemsSource="{Binding DeltaFilter}" SelectedItem="{Binding SelectedDelta}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Name}"/>
@@ -113,10 +113,10 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
-                    <!--Subject-->
-                    <TextBlock Grid.Row="2" Grid.Column="3" Text="Subject" Padding="5"/>
+                    <!--Theta-->
+                    <TextBlock Grid.Row="2" Grid.Column="3" Text="Theta" Padding="5"/>
                     <ComboBox Grid.Row="2" Grid.Column="4" Padding="5" Margin="0,5,0,0"  BorderThickness="2" 
-                        ItemsSource="{Binding SubFilter}" SelectedItem="{Binding SelectedSubject}">
+                        ItemsSource="{Binding ThetaFilter}" SelectedItem="{Binding SelectedTheta}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Name}"/>
@@ -201,19 +201,19 @@
                                 <CheckBox Content="Letter Number" Grid.Row="1" Grid.Column="1" IsChecked="{Binding PdfFilterLetterNumber}" />
                                 <CheckBox Content="Status" Grid.Row="1" Grid.Column="2" IsChecked="{Binding PdfFilterStatus}" />
                                 <CheckBox Content="Office Receipt Date" Grid.Row="1" Grid.Column="3" IsChecked="{Binding PdfFilterOfficeReceiptDate}"/>
-                                <CheckBox Content="Topic Area" Grid.Row="1" Grid.Column="4" IsChecked="{Binding PdfFilterTopicArea}"/>
+                                <CheckBox Content="Gamma" Grid.Row="1" Grid.Column="4" IsChecked="{Binding PdfFilterGamma}"/>
 
-                                <CheckBox Content="Police Station" Grid.Row="2" Grid.Column="1" IsChecked="{Binding PdfFilterPoliceStation}"/>
+                                <CheckBox Content="Beta" Grid.Row="2" Grid.Column="1" IsChecked="{Binding PdfFilterBeta}"/>
                                 <CheckBox Content="Alpha" Grid.Row="2" Grid.Column="2" IsChecked="{Binding PdfFilterAlpha}"/>
                                 <CheckBox Content="Office Dispatch Number" Grid.Row="2" Grid.Column="3" IsChecked="{Binding PdfFilterOfficeDispatchNumber}"/>
-                                <CheckBox Content="Source" Grid.Row="2" Grid.Column="4" IsChecked="{Binding PdfFilterSource}"/>
+                                <CheckBox Content="Delta" Grid.Row="2" Grid.Column="4" IsChecked="{Binding PdfFilterDelta}"/>
 
                                 <CheckBox Content="Office Dispatch Date" Grid.Row="3" Grid.Column="1" IsChecked="{Binding PdfFilterOfficeDispatchDate}"/>
                                 <CheckBox Content="Organization Name" Grid.Row="3" Grid.Column="2" IsChecked="{Binding PdfFilterOrganizationName}"/>
                                 <CheckBox Content="Sanha Detail" Grid.Row="3" Grid.Column="3" IsChecked="{Binding PdfFilterSanhaDetail}"/>
                                 <CheckBox Content="Verification Detail" Grid.Row="3" Grid.Column="4" IsChecked="{Binding PdfFilterVerificationDetail}"/>
 
-                                <CheckBox Content="Subject" Grid.Row="4" Grid.Column="1" IsChecked="{Binding PdfFilterSubject}"/>
+                                <CheckBox Content="Theta" Grid.Row="4" Grid.Column="1" IsChecked="{Binding PdfFilterTheta}"/>
                                 <CheckBox Content="PS Dispatch Number" Grid.Row="4" Grid.Column="2" IsChecked="{Binding PdfFilterPSDispatchNumber}"/>
                                 <CheckBox Content="PS Dispatch Date" Grid.Row="4" Grid.Column="3" IsChecked="{Binding PdfFilterPSDispatchDate}"/>
                                 <CheckBox Content="Case Number" Grid.Row="4" Grid.Column="4" IsChecked="{Binding PdfFilterCaseNumber}"/>
@@ -273,7 +273,7 @@
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
 
-                        <DataGridTextColumn Binding="{Binding LetterNumber}" Header="LetterNumber" />
+                        <DataGridTextColumn Binding="{Binding LetterNumber}" Header="Letter Number" />
 
                         <DataGridTemplateColumn Header="Recipt Date " CanUserSort="True" SortMemberPath="OfficeReceiptDate">
                             <DataGridTemplateColumn.CellTemplate >
@@ -307,33 +307,33 @@
                         </DataGridTemplateColumn>
                         
                         
-                        <DataGridComboBoxColumn Header="Topic/Area" 
-                                                SelectedValueBinding="{Binding TopicAreaID}" 
+                        <DataGridComboBoxColumn Header="Gamma" 
+                                                SelectedValueBinding="{Binding GammaID}" 
                                                 DisplayMemberPath="Name" 
                                                 SelectedValuePath="Id" >
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="{x:Type ComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.TopicsAndAreas, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Gammas, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
                                 </Style>
                             </DataGridComboBoxColumn.ElementStyle>
                             <DataGridComboBoxColumn.EditingElementStyle>
                                 <Style TargetType="{x:Type ComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.TopicsAndAreas, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Gammas, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
                                 </Style>
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
 
-                        <DataGridComboBoxColumn  Header="Police Station"  SelectedValueBinding="{Binding PoliceStationID}" 
+                        <DataGridComboBoxColumn  Header="Beta"  SelectedValueBinding="{Binding BetaID}" 
                                                 DisplayMemberPath="Name" 
                                                 SelectedValuePath="Id">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="{x:Type ComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.PoliceStations, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Betas, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
                                 </Style>
                             </DataGridComboBoxColumn.ElementStyle>
                             <DataGridComboBoxColumn.EditingElementStyle>
                                 <Style TargetType="{x:Type ComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.PoliceStations, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Betas, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
                                 </Style>
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
@@ -386,18 +386,18 @@
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
                         
-                        <DataGridComboBoxColumn Header="Source" 
-                                                SelectedValueBinding="{Binding SourceID}" 
+                        <DataGridComboBoxColumn Header="Delta" 
+                                                SelectedValueBinding="{Binding DeltaID}" 
                                                 DisplayMemberPath="Name" 
                                                 SelectedValuePath="Id" >
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="{x:Type ComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Sources, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Deltas, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
                                 </Style>
                             </DataGridComboBoxColumn.ElementStyle>
                             <DataGridComboBoxColumn.EditingElementStyle>
                                 <Style TargetType="{x:Type ComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Sources, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Deltas, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
                                 </Style>
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
@@ -408,18 +408,18 @@
 
                         <DataGridTextColumn Binding="{Binding VerificationDetail}" Header="Verification Detail" />
 
-                        <DataGridComboBoxColumn Header="Subject" 
-                                                SelectedValueBinding="{Binding SubjectID}" 
+                        <DataGridComboBoxColumn Header="Theta" 
+                                                SelectedValueBinding="{Binding ThetaID}" 
                                                 DisplayMemberPath="Name" 
                                                 SelectedValuePath="Id" >
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="{x:Type ComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Subjects, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Thetas, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
                                 </Style>
                             </DataGridComboBoxColumn.ElementStyle>
                             <DataGridComboBoxColumn.EditingElementStyle>
                                 <Style TargetType="{x:Type ComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Subjects, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Thetas, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
                                 </Style>
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>

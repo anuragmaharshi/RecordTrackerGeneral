@@ -33,19 +33,19 @@ namespace RecordTracker.SqliteDataLayer
 
         }
 
-        public DbSet<PoliceStation> PoliceStations { get; set; }
+        public DbSet<Beta> Betas { get; set; }
 
         public DbSet<Alpha> Alphas { get; set; }
 
-        public DbSet<TopicsAndArea> TopicsAndAreas { get; set; }
+        public DbSet<Gamma> Gammas { get; set; }
 
         public DbSet<LetterRecord> LetterRecords { get; set; }
 
         public DbSet<Status> Status { get; set; }
 
-        public DbSet<Source> Sources { get; set; }
+        public DbSet<Delta> Deltas { get; set; }
 
-        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Theta> Thetas { get; set; }
 
     }
    

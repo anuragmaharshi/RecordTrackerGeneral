@@ -80,7 +80,7 @@ namespace RecordTracker.Services
         }
 
         public void AddRecords(ObservableCollection<LetterRecord> ReportRecords, ObservableCollection<Alpha> Alphas,
-            ObservableCollection<PoliceStation> PoliceStations, ObservableCollection<TopicsAndArea> TopicsAndAreas)
+            ObservableCollection<Beta> PoliceStations, ObservableCollection<Gamma> TopicsAndAreas)
         {
             foreach(var item in ReportRecords)
             {
@@ -90,8 +90,8 @@ namespace RecordTracker.Services
                 records.AddCell(item.OfficeDispatchNumber == null ? "" : item.OfficeDispatchNumber.ToString());
                 records.AddCell(item.OfficeDispatchDate==null?"":item.OfficeDispatchDate.ToString());
                 records.AddCell(Alphas.First(x=>x.Id== item.AlphaID).Name);
-                records.AddCell(PoliceStations.First(x=>x.Id== item.PoliceStationID).Name);
-                records.AddCell(TopicsAndAreas.First(x=>x.Id== item.TopicAreaID).Name);
+                records.AddCell(PoliceStations.First(x=>x.Id== item.BetaID).Name);
+                records.AddCell(TopicsAndAreas.First(x=>x.Id== item.GammaID).Name);
                 records.AddCell(item.StatusID.ToString());
                 records.AddCell(item.Remarks);
             }

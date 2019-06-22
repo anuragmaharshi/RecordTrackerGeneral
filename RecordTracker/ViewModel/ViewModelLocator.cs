@@ -47,7 +47,7 @@ namespace RecordTracker.ViewModel
                 //}
 
                 SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<PoliceStationListViewModel>();
+            SimpleIoc.Default.Register<BetaListViewModel>();
         }
 
         public MainViewModel Main
@@ -58,11 +58,11 @@ namespace RecordTracker.ViewModel
             }
         }
 
-        public PoliceStationListViewModel PoliceStationList
+        public BetaListViewModel PoliceStationList
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<PoliceStationListViewModel>();
+                return ServiceLocator.Current.GetInstance<BetaListViewModel>();
             }
         }
         public static void Cleanup()

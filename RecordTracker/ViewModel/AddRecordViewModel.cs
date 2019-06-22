@@ -18,17 +18,17 @@ namespace RecordTracker.ViewModel
         IAlphaRepository Alpharepo;
         ObservableCollection<Alpha> _Alphas;
 
-        IPoliceStationRepository PSrepo;
-        ObservableCollection<PoliceStation> _PoliceStations;
+        IBetaRepository Betarepo;
+        ObservableCollection<Beta> _Betas;
 
-        ITopicAndAreaRepository TArepo;
-        ObservableCollection<TopicsAndArea> _topicsAndAreas;
+        IGammaRepository Gammarepo;
+        ObservableCollection<Gamma> _Gammas;
 
-        ISubjectRepository SubRepo;
-        ObservableCollection<Subject> _subjects;
+        IThetaRepository ThetaRepo;
+        ObservableCollection<Theta> _Thetas;
 
-        ISourceRepository SourceRepo;
-        ObservableCollection<Source> _source;
+        IDeltaRepository DeltaRepo;
+        ObservableCollection<Delta> _Deltas;
 
         IRecordRepository AddRepo;
         public RelayCommand AddNewRecord{ get; private set; }
@@ -43,10 +43,10 @@ namespace RecordTracker.ViewModel
                 {
                     _logger.Info("Inside Add Record ViewModel construtor");
                     Alpharepo = new AlphaRepository();
-                    PSrepo = new PoliceStationRepository();
-                    TArepo = new TopicAndAreaRepository();
-                    SourceRepo = new SourceRepository();
-                    SubRepo = new SubjectRepository();
+                    Betarepo = new BetaRepository();
+                    Gammarepo = new GammaRepository();
+                    DeltaRepo = new DeltaRepository();
+                    ThetaRepo = new ThetaRepository();
                     AddRepo = new RecordRepository();
                     AddNewRecord = new RelayCommand(OnAdd, CanAdd);
                     CancelRecord = new RelayCommand(OnCancel, CanCancel);
@@ -70,31 +70,31 @@ namespace RecordTracker.ViewModel
             set { _Alphas = value; RaisePropertyChanged("Alphas"); }
 
         }
-        public ObservableCollection<PoliceStation> PoliceStations
+        public ObservableCollection<Beta> Betas
         {
-            get { return _PoliceStations; }
-            set { _PoliceStations = value; RaisePropertyChanged("PoliceStations"); }
+            get { return _Betas; }
+            set { _Betas = value; RaisePropertyChanged("Betas"); }
 
         }
 
-        public ObservableCollection<TopicsAndArea> TopicsAndAreas
+        public ObservableCollection<Gamma> Gammas
         {
-            get { return _topicsAndAreas; }
-            set { _topicsAndAreas = value; RaisePropertyChanged("TopicsAndAreas"); }
+            get { return _Gammas; }
+            set { _Gammas = value; RaisePropertyChanged("Gammas"); }
 
         }
 
-        public ObservableCollection<Subject> Subjects
+        public ObservableCollection<Theta> Thetas
         {
-            get { return _subjects; }
-            set { _subjects = value; RaisePropertyChanged("Subjects"); }
+            get { return _Thetas; }
+            set { _Thetas = value; RaisePropertyChanged("Thetas"); }
 
         }
 
-        public ObservableCollection<Source> Sources
+        public ObservableCollection<Delta> Deltas
         {
-            get { return _source; }
-            set { _source = value; RaisePropertyChanged("Sources"); }
+            get { return _Deltas; }
+            set { _Deltas = value; RaisePropertyChanged("Deltas"); }
 
         }
         #endregion
@@ -264,27 +264,27 @@ namespace RecordTracker.ViewModel
         }
 
 
-        private PoliceStation _selectedPS;
-        public PoliceStation SelectedPS
+        private Beta _selectedBeta;
+        public Beta SelectedBeta
         {
-          get { return _selectedPS; }
+          get { return _selectedBeta; }
           set {
-                _selectedPS = value;
+                _selectedBeta = value;
                 AddNewRecord.RaiseCanExecuteChanged();
                 CancelRecord.RaiseCanExecuteChanged();
-                RaisePropertyChanged("SelectedPS");
+                RaisePropertyChanged("SelectedBeta");
               }
         }
 
-        private TopicsAndArea _selectedTA;
-        public TopicsAndArea SelectedTA
+        private Gamma _selectedGamma;
+        public Gamma SelectedGamma
         {
-            get { return _selectedTA; }
+            get { return _selectedGamma; }
             set {
-                _selectedTA = value;
+                _selectedGamma = value;
                 AddNewRecord.RaiseCanExecuteChanged();
                 CancelRecord.RaiseCanExecuteChanged();
-                RaisePropertyChanged("SelectedTA");
+                RaisePropertyChanged("SelectedGamma");
             }
         }
 
@@ -301,30 +301,30 @@ namespace RecordTracker.ViewModel
         }
 
 
-        private Subject _selectedSubject;
-        public Subject SelectedSubject
+        private Theta _selectedTheta;
+        public Theta SelectedTheta
         {
-            get { return _selectedSubject; }
+            get { return _selectedTheta; }
             set
             {
-                _selectedSubject = value;
+                _selectedTheta = value;
                 AddNewRecord.RaiseCanExecuteChanged();
                 CancelRecord.RaiseCanExecuteChanged();
-                RaisePropertyChanged("SelectedSubject");
+                RaisePropertyChanged("SelectedTheta");
             }
         }
 
 
-        private Source _selectedSource;
-        public Source SelectedSource
+        private Delta _selectedDelta;
+        public Delta SelectedDelta
         {
-            get { return _selectedSource; }
+            get { return _selectedDelta; }
             set
             {
-                _selectedSource = value;
+                _selectedDelta = value;
                 AddNewRecord.RaiseCanExecuteChanged();
                 CancelRecord.RaiseCanExecuteChanged();
-                RaisePropertyChanged("SelectedSource");
+                RaisePropertyChanged("SelectedDelta");
             }
         }
 
@@ -347,36 +347,36 @@ namespace RecordTracker.ViewModel
                     POData.Add(item);
                 Alphas = POData;
 
-                var PSList = PSrepo.GetPoliceStationsAsync().Result.ToList();
-                ObservableCollection<PoliceStation> PSData = new ObservableCollection<PoliceStation>();
-                foreach (var item in PSList)
-                    PSData.Add(item);
-                PoliceStations = PSData;
+                var BetaList = Betarepo.GetBetasAsync().Result.ToList();
+                ObservableCollection<Beta> BetaData = new ObservableCollection<Beta>();
+                foreach (var item in BetaList)
+                    BetaData.Add(item);
+                Betas = BetaData;
 
-                var TAList = TArepo.GetTopicAndAreasAsync().Result.ToList();
-                ObservableCollection<TopicsAndArea> TAData = new ObservableCollection<TopicsAndArea>();
-                foreach (var item in TAList)
-                    TAData.Add(item);
-                TopicsAndAreas = TAData;
+                var GammaList = Gammarepo.GetGammasAsync().Result.ToList();
+                ObservableCollection<Gamma> GammaData = new ObservableCollection<Gamma>();
+                foreach (var item in GammaList)
+                    GammaData.Add(item);
+                Gammas = GammaData;
 
-                var SourceList = SourceRepo.GetSourcesAsync().Result.ToList();
-                ObservableCollection<Source> SourceData = new ObservableCollection<Source>();
-                foreach (var item in SourceList)
-                    SourceData.Add(item);
-                Sources = SourceData;
+                var DeltaList = DeltaRepo.GetDeltasAsync().Result.ToList();
+                ObservableCollection<Delta> DeltaData = new ObservableCollection<Delta>();
+                foreach (var item in DeltaList)
+                    DeltaData.Add(item);
+                Deltas = DeltaData;
 
-                var SubjectList = SubRepo.GetSubectsAsync().Result.ToList();
-                ObservableCollection<Subject> SubjectData = new ObservableCollection<Subject>();
-                foreach (var item in SubjectList)
-                    SubjectData.Add(item);
-                Subjects = SubjectData;
+                var ThetaList = ThetaRepo.GetThetasAsync().Result.ToList();
+                ObservableCollection<Theta> ThetaData = new ObservableCollection<Theta>();
+                foreach (var item in ThetaList)
+                    ThetaData.Add(item);
+                Thetas = ThetaData;
 
-                SelectedPS = PoliceStations.First(x => x.Id.Equals(1));
-                SelectedTA = TopicsAndAreas.First(x => x.Id.Equals(1));
+                SelectedBeta = Betas.First(x => x.Id.Equals(1));
+                SelectedGamma = Gammas.First(x => x.Id.Equals(1));
                 SelectedAlpha = Alphas.First(x => x.Id.Equals(1));
-                SelectedSource = Sources.First(x => x.Id.Equals(1));
-                SelectedSubject = Subjects.First(x => x.Id.Equals(1));
-
+                SelectedDelta = Deltas.First(x => x.Id.Equals(1));
+                SelectedTheta = Thetas.First(x => x.Id.Equals(1));
+                SaveText = null;
             }
             catch (Exception e)
             {
@@ -401,8 +401,8 @@ namespace RecordTracker.ViewModel
             if (OfficeDispatchNumber != null)
                 record.OfficeDispatchNumber = OfficeDispatchNumber;
 
-            if (SelectedSource != null)
-                record.SourceID = SelectedSource.Id;
+            if (SelectedDelta != null)
+                record.DeltaID = SelectedDelta.Id;
            
             if(OfficeDispatchDate!=null)
                 record.OfficeDispatchDate = FormatDate(OfficeDispatchDate);
@@ -419,8 +419,8 @@ namespace RecordTracker.ViewModel
             if(VerificationDetail != null)
                 record.VerificationDetail = VerificationDetail;
 
-            if (SelectedSubject != null)
-                record.SubjectID = SelectedSubject.Id;
+            if (SelectedTheta != null)
+                record.ThetaID = SelectedTheta.Id;
             
             if(PsDispatchNumber!=null)
                 record.PsDispatchNumber = PsDispatchNumber;
@@ -428,14 +428,14 @@ namespace RecordTracker.ViewModel
             if(PsDispatchDate!=null)
                 record.PsDispatchDate = FormatDate(PsDispatchDate);
 
-            if (SelectedTA != null)
-                record.TopicAreaID = SelectedTA.Id;
+            if (SelectedGamma != null)
+                record.GammaID = SelectedGamma.Id;
            
             if (SelectedAlpha != null)
                 record.AlphaID = SelectedAlpha.Id;
            
-            if (SelectedPS != null)
-                record.PoliceStationID = SelectedPS.Id;
+            if (SelectedBeta != null)
+                record.BetaID = SelectedBeta.Id;
             
             record.StatusID = 1;
             record.Remarks = Remarks;
@@ -459,9 +459,9 @@ namespace RecordTracker.ViewModel
 
         private bool CanCancel()
         {
-            return SelectedPS != null || SelectedTA != null || SelectedAlpha != null 
+            return SelectedBeta != null || SelectedGamma != null || SelectedAlpha != null 
                 || LetterNumber!=null || OfficeDispatchNumber != null|| OfficeDispatchDate != null 
-                || OfficeReceiptDate != null || SelectedSource!=null || SelectedSubject!=null || PsDispatchDate!=null
+                || OfficeReceiptDate != null || SelectedDelta!=null || SelectedTheta!=null || PsDispatchDate!=null
                 || PsDispatchNumber!=null || SanhaDetail!=null|| VerificationDetail!=null || CaseNumber!=null
                 || OrganizationName!=null|| Remarks!=null;
         }
@@ -474,11 +474,11 @@ namespace RecordTracker.ViewModel
 
         private void ResetUI()
         {
-            SelectedPS = PoliceStations.First(x => x.Id.Equals(1));
-            SelectedTA = TopicsAndAreas.First(x => x.Id.Equals(1));
+            SelectedBeta = Betas.First(x => x.Id.Equals(1));
+            SelectedGamma = Gammas.First(x => x.Id.Equals(1));
             SelectedAlpha = Alphas.First(x => x.Id.Equals(1));
-            SelectedSource = Sources.First(x => x.Id.Equals(1));
-            SelectedSubject = Subjects.First(x => x.Id.Equals(1));
+            SelectedDelta = Deltas.First(x => x.Id.Equals(1));
+            SelectedTheta = Thetas.First(x => x.Id.Equals(1));
             LetterNumber = null;
             OfficeDispatchNumber = null;
             OfficeDispatchDate = null;

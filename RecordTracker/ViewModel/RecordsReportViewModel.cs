@@ -22,29 +22,28 @@ namespace RecordTracker.ViewModel
         IAlphaRepository Alpharepo;
         ObservableCollection<Alpha> _Alphas,_alphaListFilter;
        
-        IPoliceStationRepository PSrepo;
-        ObservableCollection<PoliceStation> _PoliceStations, _psListFilter;
+        IBetaRepository Betarepo;
+        ObservableCollection<Beta> _Betas, _betaListFilter;
 
-        ITopicAndAreaRepository TArepo;
-        ObservableCollection<TopicsAndArea> _topicsAndAreas, _taListFilter;
+        IGammaRepository Gammarepo;
+        ObservableCollection<Gamma> _Gammas, _gammaListFilter;
 
         IRecordRepository RecRepo;
         ObservableCollection<LetterRecord> _reportRecords;
 
-        ISubjectRepository SubRepo;
-        ObservableCollection<Subject> _subjects,_subjectListFilter;
+        IThetaRepository ThetaRepo;
+        ObservableCollection<Theta> _Thetas,_thetaListFilter;
 
-        ISourceRepository SourceRepo;
-        ObservableCollection<Source> _source,_sourceListFilter;
+        IDeltaRepository DeltaRepo;
+        ObservableCollection<Delta> _Deltas,_deltaListFilter;
 
         StatusRepository StatusRepo;
         ObservableCollection<Status> _statusS,_statusFilter;
 
-        LetterRecord _selectedRecord;
-        Alpha _selectedAlpha;
-        PoliceStation _selectedPoliceStation;
-        TopicsAndArea _selectedTopic;
        
+       
+        
+        
 
         public RelayCommand SaveRecord { get; private set; }
 
@@ -67,12 +66,12 @@ namespace RecordTracker.ViewModel
                 {
 
                     Alpharepo = new AlphaRepository();
-                    PSrepo = new PoliceStationRepository();
-                    TArepo = new TopicAndAreaRepository();
+                    Betarepo = new BetaRepository();
+                    Gammarepo = new GammaRepository();
                     RecRepo = new RecordRepository();
                     StatusRepo = new StatusRepository();
-                    SourceRepo = new SourceRepository();
-                    SubRepo = new SubjectRepository();
+                    DeltaRepo = new DeltaRepository();
+                    ThetaRepo = new ThetaRepository();
                     SaveRecord = new RelayCommand(OnSave, canSave);
                     SearchRecord = new RelayCommand(onSearch, canSearch);
                     ExportToPDF = new RelayCommand(onExportToPdf, canExport);
@@ -122,28 +121,28 @@ namespace RecordTracker.ViewModel
             set { _alphaListFilter = value; RaisePropertyChanged("AlphaFilter"); }
 
         }
-        public ObservableCollection<PoliceStation> PoliceStations
+        public ObservableCollection<Beta> Betas
         {
-            get { return _PoliceStations; }
-            set { _PoliceStations = value; RaisePropertyChanged("PoliceStations"); }
+            get { return _Betas; }
+            set { _Betas = value; RaisePropertyChanged("Betas"); }
 
         }
-        public ObservableCollection<PoliceStation> PSFilter
+        public ObservableCollection<Beta> BetaFilter
         {
-            get { return _psListFilter; }
-            set { _psListFilter = value; RaisePropertyChanged("PSFilter"); }
+            get { return _betaListFilter; }
+            set { _betaListFilter = value; RaisePropertyChanged("BetaFilter"); }
 
         }
-        public ObservableCollection<TopicsAndArea> TopicsAndAreas
+        public ObservableCollection<Gamma> Gammas
         {
-            get { return _topicsAndAreas; }
-            set { _topicsAndAreas = value; RaisePropertyChanged("TopicsAndAreas"); }
+            get { return _Gammas; }
+            set { _Gammas = value; RaisePropertyChanged("Gammas"); }
 
         }
-        public ObservableCollection<TopicsAndArea> TAFilter
+        public ObservableCollection<Gamma> GammaFilter
         {
-            get { return _taListFilter; }
-            set { _taListFilter = value; RaisePropertyChanged("TAFilter"); }
+            get { return _gammaListFilter; }
+            set { _gammaListFilter = value; RaisePropertyChanged("GammaFilter"); }
 
         }
 
@@ -167,55 +166,56 @@ namespace RecordTracker.ViewModel
             }
 
         }
-        public ObservableCollection<Subject> Subjects
+        public ObservableCollection<Theta> Thetas
         {
-            get { return _subjects; }
-            set { _subjects = value; RaisePropertyChanged("Subjects"); }
+            get { return _Thetas; }
+            set { _Thetas = value; RaisePropertyChanged("Thetas"); }
 
         }
-        public ObservableCollection<Subject> SubFilter
+        public ObservableCollection<Theta> ThetaFilter
         {
-            get { return _subjectListFilter; }
-            set { _subjectListFilter = value; RaisePropertyChanged("SubFilter"); }
+            get { return _thetaListFilter; }
+            set { _thetaListFilter = value; RaisePropertyChanged("ThetaFilter"); }
 
         }
-        public ObservableCollection<Source> Sources
+        public ObservableCollection<Delta> Deltas
         {
-            get { return _source; }
-            set { _source = value; RaisePropertyChanged("Sources"); }
+            get { return _Deltas; }
+            set { _Deltas = value; RaisePropertyChanged("Deltas"); }
 
         }
-        public ObservableCollection<Source> SrcFilter
+        public ObservableCollection<Delta> DeltaFilter
         {
-            get { return _sourceListFilter; }
-            set { _sourceListFilter = value; RaisePropertyChanged("SrcFilter"); }
+            get { return _deltaListFilter; }
+            set { _deltaListFilter = value; RaisePropertyChanged("DeltaFilter"); }
 
         }
         #endregion
 
-        private Subject _selectedSubject;
-        public Subject SelectedSubject
+        private Theta _selectedTheta;
+        public Theta SelectedTheta
         {
-            get { return _selectedSubject; }
+            get { return _selectedTheta; }
             set
             {
-                _selectedSubject = value;
-                RaisePropertyChanged("SelectedSubject");
+                _selectedTheta = value;
+                RaisePropertyChanged("SelectedTheta");
             }
         }
 
 
-        private Source _selectedSource;
-        public Source SelectedSource
+        private Delta _selectedDelta;
+        public Delta SelectedDelta
         {
-            get { return _selectedSource; }
+            get { return _selectedDelta; }
             set
             {
-                _selectedSource = value;
-                RaisePropertyChanged("SelectedSource");
+                _selectedDelta = value;
+                RaisePropertyChanged("SelectedDelta");
             }
         }
 
+        private LetterRecord _selectedRecord;
         public LetterRecord SelectedRecord
         {
             get { return _selectedRecord; }
@@ -227,6 +227,7 @@ namespace RecordTracker.ViewModel
             }
         }
 
+        private Alpha _selectedAlpha;
         public Alpha SelectedAlpha
         {
             get { return _selectedAlpha; }
@@ -237,24 +238,25 @@ namespace RecordTracker.ViewModel
             }
         }
 
-
-        public PoliceStation SelectedPoliceStation
+        private Beta _selectedBeta;
+        public Beta SelectedBeta
         {
-            get { return _selectedPoliceStation; }
+            get { return _selectedBeta; }
             set
             {
-                _selectedPoliceStation = value;
-                RaisePropertyChanged("SelectedPoliceStation");
+                _selectedBeta = value;
+                RaisePropertyChanged("SelectedBeta");
             }
         }
 
-        public TopicsAndArea SelectedTopic
+        private Gamma _selectedGamma;
+        public Gamma SelectedGamma
         {
-            get { return _selectedTopic; }
+            get { return _selectedGamma; }
             set
             {
-                _selectedTopic = value;
-                RaisePropertyChanged("SelectedTopic");
+                _selectedGamma = value;
+                RaisePropertyChanged("SelectedGamma");
             }
         }
 
@@ -268,7 +270,7 @@ namespace RecordTracker.ViewModel
                 RaisePropertyChanged("SelectedStatus");
             }
         }
-
+        #region PDF filter
         private bool _pdfLetterNumberFilter;
         public bool PdfFilterLetterNumber
         {
@@ -291,18 +293,18 @@ namespace RecordTracker.ViewModel
             set { _officeReceiptDateFilter = value; RaisePropertyChanged("PdfFilterOfficeReceiptDate"); }
         }
 
-        private bool _topicAreaFilter;
-        public bool PdfFilterTopicArea
+        private bool _gammaFilter;
+        public bool PdfFilterGamma
         {
-            get { return _topicAreaFilter; }
-            set { _topicAreaFilter = value; RaisePropertyChanged("PdfFilterTopicArea"); }
+            get { return _gammaFilter; }
+            set { _gammaFilter = value; RaisePropertyChanged("PdfFilterGamma"); }
         }
 
-        private bool _policeStationFilter;
-        public bool PdfFilterPoliceStation
+        private bool _betaFilter;
+        public bool PdfFilterBeta
         {
-            get { return _policeStationFilter; }
-            set { _policeStationFilter = value; RaisePropertyChanged("PdfFilterPoliceStation"); }
+            get { return _betaFilter; }
+            set { _betaFilter = value; RaisePropertyChanged("PdfFilterBeta"); }
         }
 
         private bool _AlphaFilter;
@@ -319,11 +321,11 @@ namespace RecordTracker.ViewModel
             set { _officeDispatchNumberFilter = value; RaisePropertyChanged("PdfFilterOfficeDispatchNumber"); }
         }
 
-        private bool _sourceFilter;
-        public bool PdfFilterSource
+        private bool _deltaFilter;
+        public bool PdfFilterDelta
         {
-            get { return _sourceFilter; }
-            set { _sourceFilter = value; RaisePropertyChanged("PdfFilterSource"); }
+            get { return _deltaFilter; }
+            set { _deltaFilter = value; RaisePropertyChanged("PdfFilterDelta"); }
         }
 
         private bool _officeDispatchDateFilter;
@@ -354,11 +356,11 @@ namespace RecordTracker.ViewModel
             set { _verificationDetaillFilter = value; RaisePropertyChanged("PdfFilterVerificationDetail"); }
         }
 
-        private bool _subjectFilter;
-        public bool PdfFilterSubject
+        private bool _thetaFilter;
+        public bool PdfFilterTheta
         {
-            get { return _subjectFilter; }
-            set { _subjectFilter = value; RaisePropertyChanged("PdfFilterSubject"); }
+            get { return _thetaFilter; }
+            set { _thetaFilter = value; RaisePropertyChanged("PdfFilterTheta"); }
         }
 
         private bool _psDispatchNumberFilter;
@@ -381,7 +383,7 @@ namespace RecordTracker.ViewModel
             get { return _caseNumberFilter; }
             set { _caseNumberFilter = value; RaisePropertyChanged("PdfFilterCaseNumber"); }
         }
-
+#endregion
         private Visibility _isWorking;
         public Visibility IsWorking
         {
@@ -397,45 +399,45 @@ namespace RecordTracker.ViewModel
             {
                 _logger.Info("Inside Records viewer view model Load data");
                 IsWorking = Visibility.Hidden;
-                 var POList = Alpharepo.GetAlphasAsync().Result.ToList();
-                ObservableCollection<Alpha> POData = new ObservableCollection<Alpha>();
+                 var AlphaList = Alpharepo.GetAlphasAsync().Result.ToList();
+                ObservableCollection<Alpha> AlphaData = new ObservableCollection<Alpha>();
                 AlphaFilter = new ObservableCollection<Alpha>();
-                foreach (var item in POList)
+                foreach (var item in AlphaList)
                 {
-                    POData.Add(item);
+                    AlphaData.Add(item);
                     AlphaFilter.Add(item);
                 }
                    
-                Alphas = POData;
+                Alphas = AlphaData;
                 AlphaFilter.Add(new Alpha() { Id = 1000, Name = "All" });
                 SelectedAlpha = AlphaFilter.First(x => x.Name.Equals("All"));
 
-                var PSList = PSrepo.GetPoliceStationsAsync().Result.ToList();
-                ObservableCollection<PoliceStation> PSData = new ObservableCollection<PoliceStation>();
-                PSFilter = new ObservableCollection<PoliceStation>();
+                var PSList = Betarepo.GetBetasAsync().Result.ToList();
+                ObservableCollection<Beta> BetaData = new ObservableCollection<Beta>();
+                BetaFilter = new ObservableCollection<Beta>();
                 foreach (var item in PSList)
                 {
-                    PSData.Add(item);
-                    PSFilter.Add(item);
+                    BetaData.Add(item);
+                    BetaFilter.Add(item);
                 }
                    
-                PoliceStations = PSData;
-                PSFilter.Add(new PoliceStation() { Id = 1000, Name = "All" });
-                SelectedPoliceStation = PSFilter.First(x => x.Name.Equals("All"));
+                Betas = BetaData;
+                BetaFilter.Add(new Beta() { Id = 1000, Name = "All" });
+                SelectedBeta = BetaFilter.First(x => x.Name.Equals("All"));
 
-                var TAList = TArepo.GetTopicAndAreasAsync().Result.ToList();
-                ObservableCollection<TopicsAndArea> TAData = new ObservableCollection<TopicsAndArea>();
-                TAFilter = new ObservableCollection<TopicsAndArea>();
-                foreach (var item in TAList)
+                var GammaList = Gammarepo.GetGammasAsync().Result.ToList();
+                ObservableCollection<Gamma> GammaData = new ObservableCollection<Gamma>();
+                GammaFilter = new ObservableCollection<Gamma>();
+                foreach (var item in GammaList)
                 {
-                    TAData.Add(item);
-                    TAFilter.Add(item);
+                    GammaData.Add(item);
+                    GammaFilter.Add(item);
                 }
                     
-                TopicsAndAreas = TAData;
+                Gammas = GammaData;
               
-                TAFilter.Add(new TopicsAndArea() { Id = 1000, Name = "All" });
-                SelectedTopic = TAFilter.First(x => x.Name.Equals("All"));
+                GammaFilter.Add(new Gamma() { Id = 1000, Name = "All" });
+                SelectedGamma = GammaFilter.First(x => x.Name.Equals("All"));
                 
 
                 var StatusList = StatusRepo.GetStatus();
@@ -451,31 +453,31 @@ namespace RecordTracker.ViewModel
                 StatusFilter.Add(new Status() { Id = 1000, Name = "All" });
                 SelectedStatus = StatusFilter.First(x => x.Name.Equals("Open"));
 
-                var SourceList = SourceRepo.GetSourcesAsync().Result.ToList();
-                ObservableCollection<Source> SourceData = new ObservableCollection<Source>();
-                SrcFilter = new ObservableCollection<Source>();
-                foreach (var item in SourceList)
+                var DeltaList = DeltaRepo.GetDeltasAsync().Result.ToList();
+                ObservableCollection<Delta> DeltaData = new ObservableCollection<Delta>();
+                DeltaFilter = new ObservableCollection<Delta>();
+                foreach (var item in DeltaList)
                 {
-                    SourceData.Add(item);
-                    SrcFilter.Add(item);
+                    DeltaData.Add(item);
+                    DeltaFilter.Add(item);
                 }
                     
-                Sources = SourceData;
-                SrcFilter.Add(new Source() { Id = 1000, Name = "All" });
-                SelectedSource= SrcFilter.First(x => x.Name.Equals("All"));
+                Deltas = DeltaData;
+                DeltaFilter.Add(new Delta() { Id = 1000, Name = "All" });
+                SelectedDelta= DeltaFilter.First(x => x.Name.Equals("All"));
 
-                var SubjectList = SubRepo.GetSubectsAsync().Result.ToList();
-                ObservableCollection<Subject> SubjectData = new ObservableCollection<Subject>();
-                SubFilter = new ObservableCollection<Subject>();
-                foreach (var item in SubjectList)
+                var ThetaList = ThetaRepo.GetThetasAsync().Result.ToList();
+                ObservableCollection<Theta> ThetaData = new ObservableCollection<Theta>();
+                ThetaFilter = new ObservableCollection<Theta>();
+                foreach (var item in ThetaList)
                 {
-                    SubjectData.Add(item);
-                    SubFilter.Add(item);
+                    ThetaData.Add(item);
+                    ThetaFilter.Add(item);
                 }
                   
-                Subjects = SubjectData;
-                SubFilter.Add(new Subject() { Id = 1000, Name = "All" });
-                SelectedSubject = SubFilter.First(x => x.Name.Equals("All"));
+                Thetas = ThetaData;
+                ThetaFilter.Add(new Theta() { Id = 1000, Name = "All" });
+                SelectedTheta = ThetaFilter.First(x => x.Name.Equals("All"));
             }
             catch (Exception e)
             {
@@ -527,52 +529,52 @@ namespace RecordTracker.ViewModel
                     idPO.Add(SelectedAlpha.Id);
                 }
 
-                if (SelectedPoliceStation.Name.Equals("All"))
+                if (SelectedBeta.Name.Equals("All"))
                 {
-                    foreach (var item in PoliceStations)
+                    foreach (var item in Betas)
                     {
                         idPS.Add(item.Id);
                     }
                 }
                 else
                 {
-                    idPS.Add(SelectedPoliceStation.Id);
+                    idPS.Add(SelectedBeta.Id);
                 }
 
-                if (SelectedTopic.Name.Equals("All"))
+                if (SelectedGamma.Name.Equals("All"))
                 {
-                    foreach (var item in TopicsAndAreas)
+                    foreach (var item in Gammas)
                     {
                         idTA.Add(item.Id);
                     }
                 }
                 else
                 {
-                    idTA.Add(SelectedTopic.Id);
+                    idTA.Add(SelectedGamma.Id);
                 }
 
-                if (SelectedSource.Name.Equals("All"))
+                if (SelectedDelta.Name.Equals("All"))
                 {
-                    foreach (var item in Sources)
+                    foreach (var item in Deltas)
                     {
                         idSrc.Add(item.Id);
                     }
                 }
                 else
                 {
-                    idSrc.Add(SelectedSource.Id);
+                    idSrc.Add(SelectedDelta.Id);
                 }
 
-                if (SelectedSubject.Name.Equals("All"))
+                if (SelectedTheta.Name.Equals("All"))
                 {
-                    foreach (var item in Subjects)
+                    foreach (var item in Thetas)
                     {
                         idSub.Add(item.Id);
                     }
                 }
                 else
                 {
-                    idSub.Add(SelectedSubject.Id);
+                    idSub.Add(SelectedTheta.Id);
                 }
 
                 if (SelectedStatus.Name.Equals("All"))
@@ -627,10 +629,10 @@ namespace RecordTracker.ViewModel
                 
             
                 create.AddFilters("Alpha", SelectedAlpha.Name);
-                create.AddFilters("Police Station", SelectedPoliceStation.Name);
-                create.AddFilters("Topic Or Area", SelectedTopic.Name);
-                create.AddFilters("Source", SelectedSource.Name);
-                create.AddFilters("Subject", SelectedSubject.Name);
+                create.AddFilters("Police Station", SelectedBeta.Name);
+                create.AddFilters("Topic Or Area", SelectedGamma.Name);
+                create.AddFilters("Source", SelectedDelta.Name);
+                create.AddFilters("Subject", SelectedTheta.Name);
                 create.AddFilters("Status", SelectedStatus.Name);
                 //create.AddRecords(_reportRecords, _Alphas, _PoliceStations, _topicsAndAreas);
                 create.AddHeader(listOfColumns);
@@ -663,14 +665,14 @@ namespace RecordTracker.ViewModel
                     SingleRecord.Add(item.OfficeReceiptDate);
                 }
 
-                if (PdfFilterTopicArea)
+                if (PdfFilterGamma)
                 {
-                    SingleRecord.Add(TopicsAndAreas.First(x => x.Id.Equals(item.TopicAreaID)).Name.ToString());
+                    SingleRecord.Add(Gammas.First(x => x.Id.Equals(item.GammaID)).Name.ToString());
                 }
 
-                if (PdfFilterPoliceStation)
+                if (PdfFilterBeta)
                 {
-                    SingleRecord.Add(PoliceStations.First(x => x.Id.Equals(item.PoliceStationID)).Name.ToString());
+                    SingleRecord.Add(Betas.First(x => x.Id.Equals(item.BetaID)).Name.ToString());
                 }
 
                 if (PdfFilterAlpha)
@@ -683,9 +685,9 @@ namespace RecordTracker.ViewModel
                     SingleRecord.Add(item.OfficeDispatchNumber);
                 }
 
-                if (PdfFilterSource)
+                if (PdfFilterDelta)
                 {
-                    SingleRecord.Add(Sources.First(x => x.Id.Equals(item.SourceID)).Name.ToString());
+                    SingleRecord.Add(Deltas.First(x => x.Id.Equals(item.DeltaID)).Name.ToString());
                 }
 
                 if (PdfFilterOfficeDispatchDate)
@@ -708,9 +710,9 @@ namespace RecordTracker.ViewModel
                     SingleRecord.Add(item.VerificationDetail);
                 }
 
-                if (PdfFilterSubject)
+                if (PdfFilterTheta)
                 {
-                    SingleRecord.Add(Subjects.First(x => x.Id.Equals(item.SubjectID)).Name.ToString());
+                    SingleRecord.Add(Thetas.First(x => x.Id.Equals(item.ThetaID)).Name.ToString());
                 }
 
                 if (PdfFilterPSDispatchNumber)
@@ -752,14 +754,14 @@ namespace RecordTracker.ViewModel
                 ListOfColumn.Add("Office Receipt Date");
             }
 
-            if (PdfFilterTopicArea)
+            if (PdfFilterGamma)
             {
-                ListOfColumn.Add("Topic Or Area");
+                ListOfColumn.Add("Gamma");
             }
 
-            if (PdfFilterPoliceStation)
+            if (PdfFilterBeta)
             {
-                ListOfColumn.Add("Police Station");
+                ListOfColumn.Add("Beta");
             }
 
             if (PdfFilterAlpha)
@@ -772,9 +774,9 @@ namespace RecordTracker.ViewModel
                 ListOfColumn.Add("Office Dispatch Number");
             }
 
-            if (PdfFilterSource)
+            if (PdfFilterDelta)
             {
-                ListOfColumn.Add("Source");
+                ListOfColumn.Add("Delta");
             }
 
             if (PdfFilterOfficeDispatchDate)
@@ -797,9 +799,9 @@ namespace RecordTracker.ViewModel
                 ListOfColumn.Add("Verification Detail");
             }
 
-            if (PdfFilterSubject)
+            if (PdfFilterTheta)
             {
-                ListOfColumn.Add("Subject");
+                ListOfColumn.Add("Theta");
             }
 
             if (PdfFilterPSDispatchNumber)

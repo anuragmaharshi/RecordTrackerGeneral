@@ -54,13 +54,13 @@ namespace RecordTracker.ViewModel
                 SaveAlpha.RaiseCanExecuteChanged();
             }
         }
-        public string NewAlphaname
+        public string NewAlphaName
         {
             get { return _alphaName; }
             set
             {
                 _alphaName = value;
-                RaisePropertyChanged("NewPOname");
+                RaisePropertyChanged("NewAlphaName");
                 //AddPoliceStation.RaiseCanExecuteChanged(); // this code will work with CanAdd function.
             }
         }
@@ -83,8 +83,8 @@ namespace RecordTracker.ViewModel
 
         private void OnAdd()
         {
-            Alpha PO = new Alpha() { Name = NewAlphaname };
-            NewAlphaname = "";
+            Alpha PO = new Alpha() { Name = NewAlphaName };
+            NewAlphaName = "";
             repo.AddAlphaAsync(PO);
             Alphas.Add(PO);
         }

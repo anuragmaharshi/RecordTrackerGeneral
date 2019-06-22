@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecordTracker.SqliteDataLayer
 {
-    public class Subject
+    public class Delta
     {
         public long Id { get; set; }
         public string Name { get; set; }

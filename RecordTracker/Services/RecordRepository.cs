@@ -39,9 +39,9 @@ namespace RecordTracker.Services
             IQueryable<SqliteDataLayer.LetterRecord> AllData;
             AllData = (from record in _context.LetterRecords
                        where record.StatusID == 1 
-                       && PSids.Any(x=>x.Equals(record.PoliceStationID))
+                       && PSids.Any(x=>x.Equals(record.BetaID))
                        && POids.Any(x=>x.Equals(record.AlphaID))
-                       && TAids.Any(x=>x.Equals(record.TopicAreaID))
+                       && TAids.Any(x=>x.Equals(record.GammaID))
                        select record);
           
             return AllData.ToListAsync();
@@ -57,11 +57,11 @@ namespace RecordTracker.Services
             IQueryable<SqliteDataLayer.LetterRecord> AllData;
             AllData = (from record in _context.LetterRecords
                        where StatusIds.Any(x=>x.Equals(record.StatusID))
-                       && PSids.Any(x => x.Equals(record.PoliceStationID))
+                       && PSids.Any(x => x.Equals(record.BetaID))
                        && POids.Any(x => x.Equals(record.AlphaID))
-                       && TAids.Any(x => x.Equals(record.TopicAreaID))
-                       && Srcids.Any(x => x.Equals(record.SourceID))
-                       && Subids.Any(x=> x.Equals(record.SubjectID))
+                       && TAids.Any(x => x.Equals(record.GammaID))
+                       && Srcids.Any(x => x.Equals(record.DeltaID))
+                       && Subids.Any(x=> x.Equals(record.ThetaID))
                        select record);
 
             return AllData.ToListAsync();
@@ -80,9 +80,9 @@ namespace RecordTracker.Services
             return record;
         }
 
-        public static bool checkps(SqliteDataLayer.LetterRecord rec,PoliceStation st)
+        public static bool checkps(SqliteDataLayer.LetterRecord rec,Beta st)
         {
-            return rec.PoliceStationID == st.Id;
+            return rec.BetaID == st.Id;
         }
 
         public async Task DeleteRecordsAsync(long id)

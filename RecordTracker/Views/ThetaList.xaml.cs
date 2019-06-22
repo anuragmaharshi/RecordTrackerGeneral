@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace RecordTracker.Views
 {
     /// <summary>
-    /// Interaction logic for TopicAndArea.xaml
+    /// Interaction logic for SubjectList.xaml
     /// </summary>
-    public partial class TopicAndAreaList : UserControl
+    public partial class ThetaList : UserControl
     {
-        public TopicAndAreaList()
+        public ThetaList()
         {
             InitializeComponent();
         }

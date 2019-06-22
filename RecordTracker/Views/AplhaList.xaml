@@ -42,7 +42,7 @@
             <TextBlock Text="Alphas" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="5,0,0,0" 
                        FontWeight="ExtraBold" FontSize="25" Foreground="DarkBlue" FontStretch="Expanded"
                        HorizontalAlignment="Center"/>
-            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="AlphaTxt" Text="{Binding NewAlphaname}"  />
+            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="AlphaTxt" Text="{Binding NewAlphaName}"  />
             <Button Grid.Row="2" Grid.Column="3" Content="Add" Command="{Binding Path=AddAlpha}" IsEnabled="{Binding ElementName=AlphaTxt,Path=Text.Length,Mode=OneWay}"/>
             <DataGrid  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding Alphas}"
                   AutoGenerateColumns="False" CanUserAddRows="False" ColumnWidth="*" SelectedItem="{Binding SelectedAlpha}">

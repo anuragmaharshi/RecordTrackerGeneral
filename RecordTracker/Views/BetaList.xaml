@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="RecordTracker.Views.PoliceStationList"
+﻿<UserControl x:Class="RecordTracker.Views.BetaList"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -14,7 +14,7 @@
     </UserControl.Resources>
 
     <UserControl.DataContext>
-        <viewModel:PoliceStationListViewModel/>
+        <viewModel:BetaListViewModel/>
     </UserControl.DataContext>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -38,20 +38,20 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Police Station" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="5,0,0,0" 
+        <TextBlock Text="Beta" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="5,0,0,0" 
                        FontWeight="ExtraBold" FontSize="25" Foreground="DarkBlue" FontStretch="Expanded"
                        HorizontalAlignment="Center"/>
-        
-        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="PoliceStationTxt" Text="{Binding NewPsname}"  />
-        <Button Grid.Row="2" Grid.Column="3" Content="Add" Command="{Binding Path=AddPoliceStation}" IsEnabled="{Binding ElementName=PoliceStationTxt,Path=Text.Length,Mode=OneWay}"/>
-        <DataGrid  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Name="PSgrid" ItemsSource="{Binding PoliceStations}"
-                  AutoGenerateColumns="False" CanUserAddRows="False" ColumnWidth="*" SelectedItem="{Binding SelectedPoliceStation}">
+
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="BetaTxt" Text="{Binding NewBetaName}"  />
+        <Button Grid.Row="2" Grid.Column="3" Content="Add" Command="{Binding Path=AddBeta}" IsEnabled="{Binding ElementName=BetaTxt,Path=Text.Length,Mode=OneWay}"/>
+        <DataGrid  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Name="Betagrid" ItemsSource="{Binding Betas}"
+                  AutoGenerateColumns="False" CanUserAddRows="False" ColumnWidth="*" SelectedItem="{Binding SelectedBeta}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id"  Binding="{Binding Id}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Name"  Binding="{Binding Name}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="4" Grid.Column="1" Content="Save" Command="{Binding Path=SavePoliceStation}"/>
-        <Button Grid.Row="4" Grid.Column="3" Content="Delete" Command="{Binding Path=DeletePoliceStation}"/>
+        <Button Grid.Row="4" Grid.Column="1" Content="Save" Command="{Binding Path=SaveBeta}"/>
+        <Button Grid.Row="4" Grid.Column="3" Content="Delete" Command="{Binding Path=DeleteBeta}"/>
     </Grid>
 </UserControl>

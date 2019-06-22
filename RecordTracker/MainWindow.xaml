@@ -36,11 +36,11 @@
                             <ColumnDefinition Width="10"/>
                         </Grid.ColumnDefinitions>
                         <views:AlphaList Grid.Row="1" Grid.Column="1"/>
-                        <views:PoliceStationList Grid.Row="1" Grid.Column="2"/>
-                        <views:TopicAndAreaList Grid.Row="1" Grid.Column="3"/>
-                        <views:SourceList Grid.Row="2" Grid.Column="1"/>
+                        <views:BetaList Grid.Row="1" Grid.Column="2"/>
+                        <views:GammaList Grid.Row="1" Grid.Column="3"/>
+                        <views:DeltaList Grid.Row="2" Grid.Column="1"/>
 
-                        <views:SubjectList Grid.Row="2" Grid.Column="2" />
+                        <views:ThetaList Grid.Row="2" Grid.Column="2" />
                         
                         
                     </Grid>
