@@ -40,11 +40,6 @@ namespace RecordTracker.ViewModel
         StatusRepository StatusRepo;
         ObservableCollection<Status> _statusS,_statusFilter;
 
-       
-       
-        
-        
-
         public RelayCommand SaveRecord { get; private set; }
 
         public RelayCommand SearchRecord { get; private set; }
@@ -76,7 +71,7 @@ namespace RecordTracker.ViewModel
                     SearchRecord = new RelayCommand(onSearch, canSearch);
                     ExportToPDF = new RelayCommand(onExportToPdf, canExport);
                     DeleteRecord = new RelayCommand(onDelete, canDelete);
-                    PdfFilterLetterNumber = true;
+                    PdfFilterZeus = true;
                     PdfFilterStatus = true;
                 }
             }
@@ -87,23 +82,6 @@ namespace RecordTracker.ViewModel
             }
            
         }
-
-        private bool canDelete()
-        {
-            return SelectedRecord != null;
-        }
-
-        private void onDelete()
-        {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo,MessageBoxImage.Warning);
-            if (messageBoxResult == MessageBoxResult.Yes)
-            {
-                RecRepo.DeleteRecordsAsync(SelectedRecord.Id);
-                ReportRecords.Remove(SelectedRecord);
-                SelectedRecord = null;
-            }
-        }
-
 
         #endregion
 
@@ -192,6 +170,7 @@ namespace RecordTracker.ViewModel
         }
         #endregion
 
+        #region Properties
         private Theta _selectedTheta;
         public Theta SelectedTheta
         {
@@ -270,12 +249,25 @@ namespace RecordTracker.ViewModel
                 RaisePropertyChanged("SelectedStatus");
             }
         }
-        #region PDF filter
-        private bool _pdfLetterNumberFilter;
-        public bool PdfFilterLetterNumber
+
+        private Visibility _isWorking;
+        public Visibility IsWorking
         {
-            get { return _pdfLetterNumberFilter; }
-            set { _pdfLetterNumberFilter = value; RaisePropertyChanged("PdfFilterLetterNumber"); }
+            get { return _isWorking; }
+            set
+            {
+                _isWorking = value; RaisePropertyChanged("IsWorking");
+
+            }
+        }
+        #endregion
+
+        #region PDF filter
+        private bool _pdfZeusFilter;
+        public bool PdfFilterZeus
+        {
+            get { return _pdfZeusFilter; }
+            set { _pdfZeusFilter = value; RaisePropertyChanged("PdfFilterZeus"); }
         }
 
 
@@ -286,11 +278,11 @@ namespace RecordTracker.ViewModel
             set { _pdfStatusFilter = value; RaisePropertyChanged("PdfFilterStatus"); }
         }
 
-        private bool _officeReceiptDateFilter;
-        public bool PdfFilterOfficeReceiptDate
+        private bool _pdfEndDateFilter;
+        public bool PdfFilterEndDate
         {
-            get { return _officeReceiptDateFilter; }
-            set { _officeReceiptDateFilter = value; RaisePropertyChanged("PdfFilterOfficeReceiptDate"); }
+            get { return _pdfEndDateFilter; }
+            set { _pdfEndDateFilter = value; RaisePropertyChanged("PdfFilterEndDate"); }
         }
 
         private bool _gammaFilter;
@@ -314,11 +306,11 @@ namespace RecordTracker.ViewModel
             set { _AlphaFilter = value; RaisePropertyChanged("PdfFilterAlpha"); }
         }
 
-        private bool _officeDispatchNumberFilter;
-        public bool PdfFilterOfficeDispatchNumber
+        private bool _pdfHeraFilter;
+        public bool PdfFilterHera
         {
-            get { return _officeDispatchNumberFilter; }
-            set { _officeDispatchNumberFilter = value; RaisePropertyChanged("PdfFilterOfficeDispatchNumber"); }
+            get { return _pdfHeraFilter; }
+            set { _pdfHeraFilter = value; RaisePropertyChanged("PdfFilterHera"); }
         }
 
         private bool _deltaFilter;
@@ -328,32 +320,32 @@ namespace RecordTracker.ViewModel
             set { _deltaFilter = value; RaisePropertyChanged("PdfFilterDelta"); }
         }
 
-        private bool _officeDispatchDateFilter;
-        public bool PdfFilterOfficeDispatchDate
+        private bool _pdfBeginDateFilter;
+        public bool PdfFilterBeginDate
         {
-            get { return _officeDispatchDateFilter; }
-            set { _officeDispatchDateFilter = value; RaisePropertyChanged("PdfFilterOfficeDispatchDate"); }
+            get { return _pdfBeginDateFilter; }
+            set { _pdfBeginDateFilter = value; RaisePropertyChanged("PdfFilterBeginDate"); }
         }
 
-        private bool _organizationNameFilter;
-        public bool PdfFilterOrganizationName
+        private bool _pdfPoseidonFilter;
+        public bool PdfFilterPoseidon
         {
-            get { return _organizationNameFilter; }
-            set { _organizationNameFilter = value; RaisePropertyChanged("PdfFilterOrganizationName"); }
+            get { return _pdfPoseidonFilter; }
+            set { _pdfPoseidonFilter = value; RaisePropertyChanged("PdfFilterPoseidon"); }
         }
 
-        private bool _sanhaDetailFilter;
-        public bool PdfFilterSanhaDetail
+        private bool _pdfAresFilter;
+        public bool PdfFilterAres
         {
-            get { return _sanhaDetailFilter; }
-            set { _sanhaDetailFilter = value; RaisePropertyChanged("PdfFilterSanhaDetail"); }
+            get { return _pdfAresFilter; }
+            set { _pdfAresFilter = value; RaisePropertyChanged("PdfFilterAres"); }
         }
 
-        private bool _verificationDetaillFilter;
-        public bool PdfFilterVerificationDetail
+        private bool _pdfAthenaFilter;
+        public bool PdfFilterAthena
         {
-            get { return _verificationDetaillFilter; }
-            set { _verificationDetaillFilter = value; RaisePropertyChanged("PdfFilterVerificationDetail"); }
+            get { return _pdfAthenaFilter; }
+            set { _pdfAthenaFilter = value; RaisePropertyChanged("PdfFilterAthena"); }
         }
 
         private bool _thetaFilter;
@@ -363,35 +355,29 @@ namespace RecordTracker.ViewModel
             set { _thetaFilter = value; RaisePropertyChanged("PdfFilterTheta"); }
         }
 
-        private bool _psDispatchNumberFilter;
-        public bool PdfFilterPSDispatchNumber
+        private bool _pdfArtemisFilter;
+        public bool PdfFilterArtemis
         {
-            get { return _psDispatchNumberFilter; }
-            set { _psDispatchNumberFilter = value; RaisePropertyChanged("PdfFilterPSDispatchNumber"); }
+            get { return _pdfArtemisFilter; }
+            set { _pdfArtemisFilter = value; RaisePropertyChanged("PdfFilterArtemis"); }
         }
 
-        private bool _psDispatchDateFilter;
-        public bool PdfFilterPSDispatchDate
+        private bool _pdfTargetDateFilter;
+        public bool PdfFilterTargetDate
         {
-            get { return _psDispatchDateFilter; }
-            set { _psDispatchDateFilter = value; RaisePropertyChanged("PdfFilterPSDispatchDate"); }
+            get { return _pdfTargetDateFilter; }
+            set { _pdfTargetDateFilter = value; RaisePropertyChanged("PdfFilterTargetDate"); }
         }
 
-        private bool _caseNumberFilter;
-        public bool PdfFilterCaseNumber
+        private bool _pdfApolloFilter;
+        public bool PdfFilterApollo
         {
-            get { return _caseNumberFilter; }
-            set { _caseNumberFilter = value; RaisePropertyChanged("PdfFilterCaseNumber"); }
+            get { return _pdfApolloFilter; }
+            set { _pdfApolloFilter = value; RaisePropertyChanged("PdfFilterApollo"); }
         }
 #endregion
-        private Visibility _isWorking;
-        public Visibility IsWorking
-        {
-            get { return _isWorking; }
-            set { _isWorking = value;RaisePropertyChanged("IsWorking");
-               
-            }
-        }
+
+       
 
         public void LoadData()
         {
@@ -629,10 +615,10 @@ namespace RecordTracker.ViewModel
                 
             
                 create.AddFilters("Alpha", SelectedAlpha.Name);
-                create.AddFilters("Police Station", SelectedBeta.Name);
-                create.AddFilters("Topic Or Area", SelectedGamma.Name);
-                create.AddFilters("Source", SelectedDelta.Name);
-                create.AddFilters("Subject", SelectedTheta.Name);
+                create.AddFilters("beta", SelectedBeta.Name);
+                create.AddFilters("Gamma", SelectedGamma.Name);
+                create.AddFilters("Delt", SelectedDelta.Name);
+                create.AddFilters("Theta", SelectedTheta.Name);
                 create.AddFilters("Status", SelectedStatus.Name);
                 //create.AddRecords(_reportRecords, _Alphas, _PoliceStations, _topicsAndAreas);
                 create.AddHeader(listOfColumns);
@@ -650,9 +636,9 @@ namespace RecordTracker.ViewModel
             foreach(var item in ReportRecords)
             {
                 List<string> SingleRecord = new List<string>();
-                if (PdfFilterLetterNumber)
+                if (PdfFilterZeus)
                 {
-                    SingleRecord.Add(item.LetterNumber);
+                    SingleRecord.Add(item.Zeus);
                 }
 
                 if (PdfFilterStatus)
@@ -660,9 +646,9 @@ namespace RecordTracker.ViewModel
                     SingleRecord.Add(Statuses.First(x=>x.Id.Equals(item.StatusID)).Name.ToString());
                 }
 
-                if (PdfFilterOfficeReceiptDate)
+                if (PdfFilterEndDate)
                 {
-                    SingleRecord.Add(item.OfficeReceiptDate);
+                    SingleRecord.Add(item.EndDate);
                 }
 
                 if (PdfFilterGamma)
@@ -680,9 +666,9 @@ namespace RecordTracker.ViewModel
                     SingleRecord.Add(Alphas.First(x => x.Id.Equals(item.AlphaID)).Name.ToString());
                 }
 
-                if (PdfFilterOfficeDispatchNumber)
+                if (PdfFilterHera)
                 {
-                    SingleRecord.Add(item.OfficeDispatchNumber);
+                    SingleRecord.Add(item.Hera);
                 }
 
                 if (PdfFilterDelta)
@@ -690,24 +676,24 @@ namespace RecordTracker.ViewModel
                     SingleRecord.Add(Deltas.First(x => x.Id.Equals(item.DeltaID)).Name.ToString());
                 }
 
-                if (PdfFilterOfficeDispatchDate)
+                if (PdfFilterBeginDate)
                 {
-                    SingleRecord.Add(item.OfficeDispatchDate);
+                    SingleRecord.Add(item.BeginDate);
                 }
 
-                if (PdfFilterOrganizationName)
+                if (PdfFilterPoseidon)
                 {
-                    SingleRecord.Add(item.OrganizationName);
+                    SingleRecord.Add(item.Poseidon);
                 }
 
-                if (PdfFilterSanhaDetail)
+                if (PdfFilterAres)
                 {
-                    SingleRecord.Add(item.SanhaDetail);
+                    SingleRecord.Add(item.Ares);
                 }
 
-                if (PdfFilterVerificationDetail)
+                if (PdfFilterAthena)
                 {
-                    SingleRecord.Add(item.VerificationDetail);
+                    SingleRecord.Add(item.Athena);
                 }
 
                 if (PdfFilterTheta)
@@ -715,19 +701,19 @@ namespace RecordTracker.ViewModel
                     SingleRecord.Add(Thetas.First(x => x.Id.Equals(item.ThetaID)).Name.ToString());
                 }
 
-                if (PdfFilterPSDispatchNumber)
+                if (PdfFilterArtemis)
                 {
-                    SingleRecord.Add(item.PsDispatchNumber);
+                    SingleRecord.Add(item.Artemis);
                 }
 
-                if (PdfFilterPSDispatchDate)
+                if (PdfFilterTargetDate)
                 {
-                    SingleRecord.Add(item.PsDispatchDate);
+                    SingleRecord.Add(item.TargetDate);
                 }
 
-                if (PdfFilterCaseNumber)
+                if (PdfFilterApollo)
                 {
-                    SingleRecord.Add(item.CaseNumber);
+                    SingleRecord.Add(item.Apollo);
                 }
                 ListOfRecord.Add(SingleRecord);
             }
@@ -739,7 +725,7 @@ namespace RecordTracker.ViewModel
         public List<string> GetColumnHeaders()
         {
           List<string> ListOfColumn = new List<string>();
-            if (PdfFilterLetterNumber)
+            if (PdfFilterZeus)
             {
                 ListOfColumn.Add("Letter number");
             }
@@ -749,7 +735,7 @@ namespace RecordTracker.ViewModel
                 ListOfColumn.Add("Status");
             }
 
-            if (PdfFilterOfficeReceiptDate)
+            if (PdfFilterEndDate)
             {
                 ListOfColumn.Add("Office Receipt Date");
             }
@@ -769,7 +755,7 @@ namespace RecordTracker.ViewModel
                 ListOfColumn.Add("Alpha");
             }
 
-            if (PdfFilterOfficeDispatchNumber)
+            if (PdfFilterHera)
             {
                 ListOfColumn.Add("Office Dispatch Number");
             }
@@ -779,22 +765,22 @@ namespace RecordTracker.ViewModel
                 ListOfColumn.Add("Delta");
             }
 
-            if (PdfFilterOfficeDispatchDate)
+            if (PdfFilterBeginDate)
             {
                 ListOfColumn.Add("Office Dispatch Date");
             }
 
-            if (PdfFilterOrganizationName)
+            if (PdfFilterPoseidon)
             {
                 ListOfColumn.Add("Organization Name");
             }
 
-            if (PdfFilterSanhaDetail)
+            if (PdfFilterAres)
             {
                 ListOfColumn.Add("Sanha Detail");
             }
 
-            if (PdfFilterVerificationDetail)
+            if (PdfFilterAthena)
             {
                 ListOfColumn.Add("Verification Detail");
             }
@@ -804,17 +790,17 @@ namespace RecordTracker.ViewModel
                 ListOfColumn.Add("Theta");
             }
 
-            if (PdfFilterPSDispatchNumber)
+            if (PdfFilterArtemis)
             {
                 ListOfColumn.Add("PS Dispatch Number");
             }
 
-            if (PdfFilterPSDispatchDate)
+            if (PdfFilterTargetDate)
             {
                 ListOfColumn.Add("PS Dispatch Date");
             }
 
-            if (PdfFilterCaseNumber)
+            if (PdfFilterApollo)
             {
                 ListOfColumn.Add("Case Number");
             }
@@ -822,6 +808,22 @@ namespace RecordTracker.ViewModel
 
 
             return ListOfColumn;
+        }
+
+        private bool canDelete()
+        {
+            return SelectedRecord != null;
+        }
+
+        private void onDelete()
+        {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                RecRepo.DeleteRecordsAsync(SelectedRecord.Id);
+                ReportRecords.Remove(SelectedRecord);
+                SelectedRecord = null;
+            }
         }
     }
 }

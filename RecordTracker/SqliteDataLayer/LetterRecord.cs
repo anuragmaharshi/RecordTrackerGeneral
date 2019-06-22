@@ -11,33 +11,33 @@ namespace RecordTracker.SqliteDataLayer
     {
         public long Id { get; set; }
         public long StatusID { get; set; }
-        public string LetterNumber { get; set; }
-        public string OfficeReceiptDate { get; set; }
+        public string Zeus { get; set; }
+        public string EndDate { get; set; }
         public long GammaID { get; set; }
         public long BetaID { get; set; }
         public long AlphaID { get; set; }
-        public string OfficeDispatchNumber { get; set; }
+        public string Hera { get; set; }
    
         public long DeltaID { get; set; }
-        public string OfficeDispatchDate { get; set; }
-        public string OrganizationName { get; set; }
-        public string SanhaDetail { get; set; }
-        public string VerificationDetail { get; set; }
+        public string BeginDate { get; set; }
+        public string Poseidon { get; set; }
+        public string Ares { get; set; }
+        public string Athena { get; set; }
 
         public long ThetaID { get; set; }
-        public string PsDispatchNumber { get; set; }
-        public string PsDispatchDate { get; set; }
-        public string CaseNumber { get; set; }
+        public string Artemis { get; set; }
+        public string TargetDate { get; set; }
+        public string Apollo { get; set; }
 
         public string Remarks { get; set; }
 
-        public string FormatOfficeDispatchDate
+        public string FormatBeginDate
         {
             get
             {
                 try
                 {
-                    var dty = DateTime.Parse(OfficeDispatchDate, CultureInfo.InvariantCulture);
+                    var dty = DateTime.Parse(BeginDate, CultureInfo.InvariantCulture);
                     return dty.ToString("yyyy-MM-dd");
                 }
                 catch 
@@ -49,13 +49,13 @@ namespace RecordTracker.SqliteDataLayer
            
         }
 
-        public string FormatOfficeReceiptDate
+        public string FormatEndDate
         {
             get
             {
                 try
                 {
-                    var dty = DateTime.Parse(OfficeReceiptDate, CultureInfo.InvariantCulture);
+                    var dty = DateTime.Parse(EndDate, CultureInfo.InvariantCulture);
                     return dty.ToString("yyyy-MM-dd");
                 }
                 catch
@@ -67,13 +67,13 @@ namespace RecordTracker.SqliteDataLayer
 
         }
 
-        public string FormatPsDispatchDate
+        public string FormatTargetDate
         {
             get
             {
                 try
                 {
-                    var dty = DateTime.Parse(PsDispatchDate, CultureInfo.InvariantCulture);
+                    var dty = DateTime.Parse(TargetDate, CultureInfo.InvariantCulture);
                     return dty.ToString("yyyy-MM-dd");
                 }
                 catch
@@ -89,7 +89,7 @@ namespace RecordTracker.SqliteDataLayer
         {
             string value = string.Format("letter number {0} , OfficeReceiptDate = {1}, TopicAreaID = {2} ," +
                 " OfficeDispatchNumber = {3},FormatPsDispatchDate = {4}",
-                LetterNumber, OfficeReceiptDate, GammaID, OfficeDispatchNumber, FormatPsDispatchDate);
+                Zeus, EndDate, GammaID, Hera, FormatTargetDate);
             return value;
         }
 

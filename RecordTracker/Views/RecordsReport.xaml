@@ -123,7 +123,8 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-
+                    
+                    <!-- Status-->
                     <TextBlock Grid.Row="2" Grid.Column="5" Text="Status" Padding="5"/>
                     <ComboBox Grid.Row="2" Grid.Column="6" Padding="5" Margin="0,5,0,0"  BorderThickness="2" 
                         ItemsSource="{Binding StatusFilter}" SelectedItem="{Binding SelectedStatus}">
@@ -133,6 +134,7 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
+                    
                     <!--Other Seach element-->
                     <TextBlock Grid.Row="3" Grid.Column="1" Text="Other Filter" Margin="5,5,0,0" Visibility="Hidden"/>
                     <TextBox Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Visibility="Hidden">
@@ -198,25 +200,25 @@
                                 </Grid.ColumnDefinitions>
 
 
-                                <CheckBox Content="Letter Number" Grid.Row="1" Grid.Column="1" IsChecked="{Binding PdfFilterLetterNumber}" />
+                                <CheckBox Content="Letter Number" Grid.Row="1" Grid.Column="1" IsChecked="{Binding PdfFilterZeus}" />
                                 <CheckBox Content="Status" Grid.Row="1" Grid.Column="2" IsChecked="{Binding PdfFilterStatus}" />
-                                <CheckBox Content="Office Receipt Date" Grid.Row="1" Grid.Column="3" IsChecked="{Binding PdfFilterOfficeReceiptDate}"/>
+                                <CheckBox Content="Office Receipt Date" Grid.Row="1" Grid.Column="3" IsChecked="{Binding PdfFilterEndDate}"/>
                                 <CheckBox Content="Gamma" Grid.Row="1" Grid.Column="4" IsChecked="{Binding PdfFilterGamma}"/>
 
                                 <CheckBox Content="Beta" Grid.Row="2" Grid.Column="1" IsChecked="{Binding PdfFilterBeta}"/>
                                 <CheckBox Content="Alpha" Grid.Row="2" Grid.Column="2" IsChecked="{Binding PdfFilterAlpha}"/>
-                                <CheckBox Content="Office Dispatch Number" Grid.Row="2" Grid.Column="3" IsChecked="{Binding PdfFilterOfficeDispatchNumber}"/>
+                                <CheckBox Content="Office Dispatch Number" Grid.Row="2" Grid.Column="3" IsChecked="{Binding PdfFilterHera}"/>
                                 <CheckBox Content="Delta" Grid.Row="2" Grid.Column="4" IsChecked="{Binding PdfFilterDelta}"/>
 
-                                <CheckBox Content="Office Dispatch Date" Grid.Row="3" Grid.Column="1" IsChecked="{Binding PdfFilterOfficeDispatchDate}"/>
-                                <CheckBox Content="Organization Name" Grid.Row="3" Grid.Column="2" IsChecked="{Binding PdfFilterOrganizationName}"/>
-                                <CheckBox Content="Sanha Detail" Grid.Row="3" Grid.Column="3" IsChecked="{Binding PdfFilterSanhaDetail}"/>
-                                <CheckBox Content="Verification Detail" Grid.Row="3" Grid.Column="4" IsChecked="{Binding PdfFilterVerificationDetail}"/>
+                                <CheckBox Content="Office Dispatch Date" Grid.Row="3" Grid.Column="1" IsChecked="{Binding PdfFilterBeginDate}"/>
+                                <CheckBox Content="Organization Name" Grid.Row="3" Grid.Column="2" IsChecked="{Binding PdfFilterPoseidon}"/>
+                                <CheckBox Content="Sanha Detail" Grid.Row="3" Grid.Column="3" IsChecked="{Binding PdfFilterAres}"/>
+                                <CheckBox Content="Verification Detail" Grid.Row="3" Grid.Column="4" IsChecked="{Binding PdfFilterAthena}"/>
 
                                 <CheckBox Content="Theta" Grid.Row="4" Grid.Column="1" IsChecked="{Binding PdfFilterTheta}"/>
-                                <CheckBox Content="PS Dispatch Number" Grid.Row="4" Grid.Column="2" IsChecked="{Binding PdfFilterPSDispatchNumber}"/>
-                                <CheckBox Content="PS Dispatch Date" Grid.Row="4" Grid.Column="3" IsChecked="{Binding PdfFilterPSDispatchDate}"/>
-                                <CheckBox Content="Case Number" Grid.Row="4" Grid.Column="4" IsChecked="{Binding PdfFilterCaseNumber}"/>
+                                <CheckBox Content="PS Dispatch Number" Grid.Row="4" Grid.Column="2" IsChecked="{Binding PdfFilterArtemis}"/>
+                                <CheckBox Content="PS Dispatch Date" Grid.Row="4" Grid.Column="3" IsChecked="{Binding PdfFilterTargetDate}"/>
+                                <CheckBox Content="Case Number" Grid.Row="4" Grid.Column="4" IsChecked="{Binding PdfFilterApollo}"/>
                             </Grid>
                         </ScrollViewer>
                     </Border>
@@ -256,7 +258,8 @@
                         </Style>
                     </DataGrid.ColumnHeaderStyle>
                     <DataGrid.Columns>
-
+                        
+                        <!--Status-->
                         <DataGridComboBoxColumn Width="100" Header="Status"   
                                                 SelectedValueBinding="{Binding StatusID}" 
                                                 DisplayMemberPath="Name" 
@@ -272,18 +275,20 @@
                                 </Style>
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
+                        
+                        <!--Letter Number-->
+                        <DataGridTextColumn Binding="{Binding Zeus}" Header="Letter Number" />
 
-                        <DataGridTextColumn Binding="{Binding LetterNumber}" Header="Letter Number" />
-
-                        <DataGridTemplateColumn Header="Recipt Date " CanUserSort="True" SortMemberPath="OfficeReceiptDate">
+                        <!--Office Recipt Date -->
+                        <DataGridTemplateColumn Header="Recipt Date" CanUserSort="True" SortMemberPath="EndDate">
                             <DataGridTemplateColumn.CellTemplate >
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding FormatOfficeReceiptDate,TargetNullValue={x:Static system:String.Empty}}"  Margin="4"/>
+                                    <TextBlock Text="{Binding FormatEndDate,TargetNullValue={x:Static system:String.Empty}}"  Margin="4"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate >
-                                    <DatePicker SelectedDate="{Binding OfficeReceiptDate, StringFormat='yyyy-MM-dd',TargetNullValue={x:Static system:String.Empty}, 
+                                    <DatePicker SelectedDate="{Binding EndDate, StringFormat='yyyy-MM-dd',TargetNullValue={x:Static system:String.Empty}, 
                                         Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  >
                                         <DatePicker.Resources>
                                             <Style TargetType="DatePickerTextBox" >
@@ -299,14 +304,12 @@
                                                 </Setter>
                                             </Style>
                                         </DatePicker.Resources>
-
                                     </DatePicker>
-
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
                         
-                        
+                        <!--Topics and Area-->
                         <DataGridComboBoxColumn Header="Gamma" 
                                                 SelectedValueBinding="{Binding GammaID}" 
                                                 DisplayMemberPath="Name" 
@@ -323,6 +326,7 @@
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
 
+                        <!--Police Station -->
                         <DataGridComboBoxColumn  Header="Beta"  SelectedValueBinding="{Binding BetaID}" 
                                                 DisplayMemberPath="Name" 
                                                 SelectedValuePath="Id">
@@ -338,6 +342,7 @@
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
 
+                        <!--Police Officer -->
                         <DataGridComboBoxColumn  Header="Alpha" SelectedValueBinding="{Binding AlphaID}" 
                                                 DisplayMemberPath="Name" 
                                                 SelectedValuePath="Id">
@@ -353,17 +358,19 @@
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
 
-                        <DataGridTextColumn Binding="{Binding OfficeDispatchNumber}" Header="Office Dispatch Number" />
+                        <!--Office Dispatch Number-->
+                        <DataGridTextColumn Binding="{Binding Hera}" Header="Office Dispatch Number" />
 
-                        <DataGridTemplateColumn Header="Office Dispatch Date" CanUserSort="True" SortMemberPath="OfficeDispatchDate">
+                        <!--Office Dispatch Date-->
+                        <DataGridTemplateColumn Header="Office Dispatch Date" CanUserSort="True" SortMemberPath="BeginDate">
                             <DataGridTemplateColumn.CellTemplate >
                                 <DataTemplate >
-                                    <TextBlock Text="{Binding FormatOfficeDispatchDate, TargetNullValue={x:Static system:String.Empty}}"  Margin="4"/>
+                                    <TextBlock Text="{Binding FormatBeginDate, TargetNullValue={x:Static system:String.Empty}}"  Margin="4"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate >
-                                    <DatePicker SelectedDate="{Binding OfficeDispatchDate,StringFormat='yyyy-MM-dd',TargetNullValue={x:Static system:String.Empty}, 
+                                    <DatePicker SelectedDate="{Binding BeginDate,StringFormat='yyyy-MM-dd',TargetNullValue={x:Static system:String.Empty}, 
                                         Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                                         <DatePicker.Resources>
                                             <Style TargetType="DatePickerTextBox" >
@@ -379,13 +386,12 @@
                                                 </Setter>
                                             </Style>
                                         </DatePicker.Resources>
-
                                     </DatePicker>
-
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
-                        
+
+                        <!--Delta-->
                         <DataGridComboBoxColumn Header="Delta" 
                                                 SelectedValueBinding="{Binding DeltaID}" 
                                                 DisplayMemberPath="Name" 
@@ -402,12 +408,16 @@
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
 
-                        <DataGridTextColumn Binding="{Binding OrganizationName}" Header="Organization Name" />
+                        <!--Organization Name-->
+                        <DataGridTextColumn Binding="{Binding Poseidon}" Header="Organization Name" />
 
-                        <DataGridTextColumn Binding="{Binding SanhaDetail}" Header="Sanha Detail" />
+                        <!--Ares-->
+                        <DataGridTextColumn Binding="{Binding Ares}" Header="Sanha Detail" />
 
-                        <DataGridTextColumn Binding="{Binding VerificationDetail}" Header="Verification Detail" />
+                        <!--Verification Detail-->
+                        <DataGridTextColumn Binding="{Binding Athena}" Header="Verification Detail" />
 
+                        <!--Theta-->
                         <DataGridComboBoxColumn Header="Theta" 
                                                 SelectedValueBinding="{Binding ThetaID}" 
                                                 DisplayMemberPath="Name" 
@@ -424,17 +434,19 @@
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
 
-                        <DataGridTextColumn Binding="{Binding PsDispatchNumber}" Header="PS Dispatch Number" />
+                        <!--PS Dispatch Number-->
+                        <DataGridTextColumn Binding="{Binding Artemis}" Header="PS Dispatch Number" />
 
-                        <DataGridTemplateColumn Header="PS Dispatch Date" CanUserSort="True" SortMemberPath="PsDispatchDate">
+                        <!--PS Dispatch Date-->
+                        <DataGridTemplateColumn Header="PS Dispatch Date" CanUserSort="True" SortMemberPath="TargetDate">
                             <DataGridTemplateColumn.CellTemplate >
                                 <DataTemplate >
-                                    <TextBlock Text="{Binding FormatPsDispatchDate,TargetNullValue={x:Static system:String.Empty}}"  Margin="4"/>
+                                    <TextBlock Text="{Binding FormatTargetDate,TargetNullValue={x:Static system:String.Empty}}"  Margin="4"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate >
-                                    <DatePicker SelectedDate="{Binding PsDispatchDate,StringFormat='yyyy-MM-dd',TargetNullValue={x:Static system:String.Empty}, Mode=TwoWay}" >
+                                    <DatePicker SelectedDate="{Binding TargetDate,StringFormat='yyyy-MM-dd',TargetNullValue={x:Static system:String.Empty}, Mode=TwoWay}" >
                                         <DatePicker.Resources>
                                             <Style TargetType="DatePickerTextBox" >
                                                 <Setter Property="Control.Template">
@@ -448,14 +460,13 @@
                                                 </Setter>
                                             </Style>
                                         </DatePicker.Resources>
-
                                     </DatePicker>
-
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTextColumn Binding="{Binding CaseNumber}" Header="Case Number" />
+                        <!--Case Number-->
+                        <DataGridTextColumn Binding="{Binding Apollo}" Header="Case Number" />
 
                         <DataGridTextColumn Width="200" Binding="{Binding Remarks}" Header="Remarks" />
 

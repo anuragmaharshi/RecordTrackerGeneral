@@ -14,6 +14,7 @@ namespace RecordTracker.ViewModel
 {
     public class AddRecordViewModel : ViewModelBase
     {
+        #region variables
         private static Logger _logger = LogManager.GetCurrentClassLogger();
         IAlphaRepository Alpharepo;
         ObservableCollection<Alpha> _Alphas;
@@ -33,6 +34,8 @@ namespace RecordTracker.ViewModel
         IRecordRepository AddRepo;
         public RelayCommand AddNewRecord{ get; private set; }
         public RelayCommand CancelRecord { get; private set; }
+
+        #endregion
 
         #region Constructor
         public AddRecordViewModel()
@@ -58,7 +61,6 @@ namespace RecordTracker.ViewModel
                 _logger.Error("Some error have occured in AddRecordViewModel" + e.StackTrace);
                 _logger.Error("AddRecordViewModel error message is " + e.Message + " inner error is " + e.InnerException.Message);
             }
-
 
         }
         #endregion
@@ -101,150 +103,148 @@ namespace RecordTracker.ViewModel
 
         #region Properties
       
-
-        private string _letterNumber ;
-        public string LetterNumber
+        private string _zeus ;
+        public string Zeus
         {
-            get { return _letterNumber; }
+            get { return _zeus; }
             set {
                 
                 if (value != "")
-                    _letterNumber = value;
+                    _zeus = value;
                 else
-                    _letterNumber = null;
-                RaisePropertyChanged("LetterNumber");
+                    _zeus = null;
+                RaisePropertyChanged("Zeus");
                 AddNewRecord.RaiseCanExecuteChanged();
                 CancelRecord.RaiseCanExecuteChanged();
             }
         }
 
-        private string _officeReceiptDate;
-        public string OfficeReceiptDate
+        private string _endDate;
+        public string EndDate
         {
-            get { return _officeReceiptDate; }
+            get { return _endDate; }
             set
             {
-                
-                _officeReceiptDate = value;
-                RaisePropertyChanged("OfficeReceiptDate");
+                _endDate = value;
+                RaisePropertyChanged("EndDate");
                 CancelRecord.RaiseCanExecuteChanged();
                 AddNewRecord.RaiseCanExecuteChanged();
             }
         }
 
-        private string _officeDispatchDate;
-        public string OfficeDispatchDate
+        private string _beginDate;
+        public string BeginDate
         {
-            get { return _officeDispatchDate; }
+            get { return _beginDate; }
             set
             {
-               
-                _officeDispatchDate = value;
-                RaisePropertyChanged("OfficeDispatchDate");
+
+                _beginDate = value;
+                RaisePropertyChanged("BeginDate");
                 CancelRecord.RaiseCanExecuteChanged();
                 AddNewRecord.RaiseCanExecuteChanged();
             }
         }
 
-        private string _officeDispatchNumber;
-        public string OfficeDispatchNumber
+        private string _hera;
+        public string Hera
         {
-            get { return _officeDispatchNumber; }
+            get { return _hera; }
             set {
                 if (value != "")
-                    _officeDispatchNumber = value;
+                    _hera = value;
                 else
-                    _officeDispatchNumber = null;
+                    _hera = null;
                 
-                RaisePropertyChanged("OfficeDispatchNumber");
+                RaisePropertyChanged("Hera");
                 AddNewRecord.RaiseCanExecuteChanged();
                 CancelRecord.RaiseCanExecuteChanged();
             }
         }
 
-        private string _psDispatchDate;
-        public string PsDispatchDate
+        private string _targetDate;
+        public string TargetDate
         {
-            get { return _psDispatchDate; }
+            get { return _targetDate; }
             set
             {
-               
-                _psDispatchDate = value;
+
+                _targetDate = value;
                 AddNewRecord.RaiseCanExecuteChanged();
                 CancelRecord.RaiseCanExecuteChanged();
-                RaisePropertyChanged("PsDispatchDate");
+                RaisePropertyChanged("TargetDate");
 
             }
         }
 
-        private string _psDispatchNumber;
-        public string PsDispatchNumber
+        private string _artemis;
+        public string Artemis
         {
-            get { return _psDispatchNumber; }
-            set
-            {
-                if (value != "")
-                    _psDispatchNumber = value;
-                else
-                    _psDispatchNumber = null;
-
-                RaisePropertyChanged("PsDispatchNumber");
-                AddNewRecord.RaiseCanExecuteChanged();
-                CancelRecord.RaiseCanExecuteChanged();
-            }
-        }
-
-        private string _sanhaDetail;
-        public string SanhaDetail
-        {
-            get { return _sanhaDetail; }
-            set
-            {
-                _sanhaDetail = value;
-                RaisePropertyChanged("SanhaDetail");
-                AddNewRecord.RaiseCanExecuteChanged();
-                CancelRecord.RaiseCanExecuteChanged();
-            }
-        }
-
-        private string _verificationDetail;
-        public string VerificationDetail
-        {
-            get { return _verificationDetail; }
-            set
-            {
-                _verificationDetail = value;
-                RaisePropertyChanged("VerificationDetail");
-                AddNewRecord.RaiseCanExecuteChanged();
-                CancelRecord.RaiseCanExecuteChanged();
-            }
-        }
-
-        private string _caseNumber;
-        public string CaseNumber
-        {
-            get { return _caseNumber; }
+            get { return _artemis; }
             set
             {
                 if (value != "")
-                    _caseNumber = value;
+                    _artemis = value;
                 else
-                    _caseNumber = null;
-                RaisePropertyChanged("CaseNumber");
+                    _artemis = null;
+
+                RaisePropertyChanged("Artemis");
+                AddNewRecord.RaiseCanExecuteChanged();
+                CancelRecord.RaiseCanExecuteChanged();
+            }
+        }
+
+        private string _ares;
+        public string Ares
+        {
+            get { return _ares; }
+            set
+            {
+                _ares = value;
+                RaisePropertyChanged("Ares");
+                AddNewRecord.RaiseCanExecuteChanged();
+                CancelRecord.RaiseCanExecuteChanged();
+            }
+        }
+
+        private string _athena;
+        public string Athena
+        {
+            get { return _athena; }
+            set
+            {
+                _athena = value;
+                RaisePropertyChanged("Athena");
+                AddNewRecord.RaiseCanExecuteChanged();
+                CancelRecord.RaiseCanExecuteChanged();
+            }
+        }
+
+        private string _apollo;
+        public string Apollo
+        {
+            get { return _apollo; }
+            set
+            {
+                if (value != "")
+                    _apollo = value;
+                else
+                    _apollo = null;
+                RaisePropertyChanged("Apollo");
                 AddNewRecord.RaiseCanExecuteChanged();
                 CancelRecord.RaiseCanExecuteChanged();
             }
         }
 
 
-        private string _organizationName;
-        public string OrganizationName
+        private string _poseidon;
+        public string Poseidon
         {
-            get { return _organizationName; }
+            get { return _poseidon; }
             set
             {
-                _organizationName = value;
-                RaisePropertyChanged("OrganizationName");
+                _poseidon = value;
+                RaisePropertyChanged("Poseidon");
                 AddNewRecord.RaiseCanExecuteChanged();
                 CancelRecord.RaiseCanExecuteChanged();
             }
@@ -387,7 +387,7 @@ namespace RecordTracker.ViewModel
 
         private bool CanAdd()
         {
-            return LetterNumber != null;
+            return Zeus != null;
 
         }
 
@@ -395,38 +395,38 @@ namespace RecordTracker.ViewModel
         {
             LetterRecord record = new LetterRecord
             {
-                LetterNumber = LetterNumber
+                Zeus = Zeus
             };
 
-            if (OfficeDispatchNumber != null)
-                record.OfficeDispatchNumber = OfficeDispatchNumber;
+            if (Hera != null)
+                record.Hera = Hera;
 
             if (SelectedDelta != null)
                 record.DeltaID = SelectedDelta.Id;
            
-            if(OfficeDispatchDate!=null)
-                record.OfficeDispatchDate = FormatDate(OfficeDispatchDate);
+            if(BeginDate != null)
+                record.BeginDate = FormatDate(BeginDate);
 
-            if(OfficeReceiptDate!=null)
-                record.OfficeReceiptDate = FormatDate(OfficeReceiptDate);
+            if(EndDate != null)
+                record.EndDate = FormatDate(EndDate);
 
-            if(OrganizationName!=null)
-                record.OrganizationName = OrganizationName;
+            if(Poseidon != null)
+                record.Poseidon = Poseidon;
 
-            if(SanhaDetail!=null)
-                record.SanhaDetail = SanhaDetail;
+            if (Ares != null)
+                record.Ares = Ares;
 
-            if(VerificationDetail != null)
-                record.VerificationDetail = VerificationDetail;
+            if (Athena != null)
+                record.Athena = Athena;
 
             if (SelectedTheta != null)
                 record.ThetaID = SelectedTheta.Id;
             
-            if(PsDispatchNumber!=null)
-                record.PsDispatchNumber = PsDispatchNumber;
+            if(Artemis != null)
+                record.Artemis = Artemis;
 
-            if(PsDispatchDate!=null)
-                record.PsDispatchDate = FormatDate(PsDispatchDate);
+            if (TargetDate != null)
+                record.TargetDate = FormatDate(TargetDate);
 
             if (SelectedGamma != null)
                 record.GammaID = SelectedGamma.Id;
@@ -440,8 +440,8 @@ namespace RecordTracker.ViewModel
             record.StatusID = 1;
             record.Remarks = Remarks;
 
-            if(CaseNumber!=null)
-                record.CaseNumber = CaseNumber;
+            if(Apollo != null)
+                record.Apollo = Apollo;
             try
             {
                 _logger.Info("Adding a new record" + record.ToString());
@@ -460,10 +460,10 @@ namespace RecordTracker.ViewModel
         private bool CanCancel()
         {
             return SelectedBeta != null || SelectedGamma != null || SelectedAlpha != null 
-                || LetterNumber!=null || OfficeDispatchNumber != null|| OfficeDispatchDate != null 
-                || OfficeReceiptDate != null || SelectedDelta!=null || SelectedTheta!=null || PsDispatchDate!=null
-                || PsDispatchNumber!=null || SanhaDetail!=null|| VerificationDetail!=null || CaseNumber!=null
-                || OrganizationName!=null|| Remarks!=null;
+                || Zeus!=null || Hera != null|| BeginDate != null 
+                || EndDate != null || SelectedDelta!=null || SelectedTheta!=null || TargetDate != null
+                || Artemis != null || Ares != null || Athena != null || Apollo != null
+                || Poseidon != null || Remarks!=null;
         }
 
         private void OnCancel()
@@ -479,17 +479,17 @@ namespace RecordTracker.ViewModel
             SelectedAlpha = Alphas.First(x => x.Id.Equals(1));
             SelectedDelta = Deltas.First(x => x.Id.Equals(1));
             SelectedTheta = Thetas.First(x => x.Id.Equals(1));
-            LetterNumber = null;
-            OfficeDispatchNumber = null;
-            OfficeDispatchDate = null;
-            OfficeReceiptDate = null;
-           
-            PsDispatchDate = null;
-            PsDispatchNumber = null;
-            SanhaDetail = null;
-            VerificationDetail = null;
-            CaseNumber = null;
-            OrganizationName = null;
+            Zeus = null;
+            Hera = null;
+            BeginDate = null;
+            EndDate = null;
+
+            TargetDate = null;
+            Artemis = null;
+            Ares = null;
+            Athena = null;
+            Apollo = null;
+            Poseidon = null;
             Remarks = null;
             
         }

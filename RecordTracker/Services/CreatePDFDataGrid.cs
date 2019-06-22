@@ -84,11 +84,11 @@ namespace RecordTracker.Services
         {
             foreach(var item in ReportRecords)
             {
-                records.AddCell(item.OfficeReceiptDate.ToString());
-                records.AddCell(item.LetterNumber.ToString());
+                records.AddCell(item.EndDate.ToString());
+                records.AddCell(item.Zeus.ToString());
                 
-                records.AddCell(item.OfficeDispatchNumber == null ? "" : item.OfficeDispatchNumber.ToString());
-                records.AddCell(item.OfficeDispatchDate==null?"":item.OfficeDispatchDate.ToString());
+                records.AddCell(item.Hera == null ? "" : item.Hera.ToString());
+                records.AddCell(item.BeginDate==null?"":item.BeginDate.ToString());
                 records.AddCell(Alphas.First(x=>x.Id== item.AlphaID).Name);
                 records.AddCell(PoliceStations.First(x=>x.Id== item.BetaID).Name);
                 records.AddCell(TopicsAndAreas.First(x=>x.Id== item.GammaID).Name);

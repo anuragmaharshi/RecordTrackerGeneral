@@ -12,21 +12,18 @@ namespace RecordTracker.Services
     public class RecordRepository : IRecordRepository
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
-        //DataLayerContext _context = new DataLayerContext(@"C:\Users\Home\MainApplication.db");
-        //DataLayerContext _context = new DataLayerContext();
         DataLayerContext _context = new DataLayerContext(Constants.GetDbFilePath());
         
         public async Task<SqliteDataLayer.LetterRecord> AddLetterRecordAsync(SqliteDataLayer.LetterRecord letterRecord)
         {
             _context.LetterRecords.Add(letterRecord);
-     
             await _context.SaveChangesAsync();
             return letterRecord;
         }
 
         public Task<List<SqliteDataLayer.LetterRecord>> GetRecordsAsync()
         {
-            //return _context.LetterRecords.ToListAsync();
+
             var records = (from record in _context.LetterRecords where record.StatusID==1 select record ).ToListAsync();
             return records;
 
@@ -34,7 +31,6 @@ namespace RecordTracker.Services
 
         public Task<List<SqliteDataLayer.LetterRecord>> GetRecordsAsync(List<long> PSids,List<long> POids,List<long> TAids)
         {
-
 
             IQueryable<SqliteDataLayer.LetterRecord> AllData;
             AllData = (from record in _context.LetterRecords
@@ -46,13 +42,11 @@ namespace RecordTracker.Services
           
             return AllData.ToListAsync();
 
-           
         }
 
         public Task<List<SqliteDataLayer.LetterRecord>> GetRecordsAsync(List<long> PSids, 
             List<long> POids, List<long> TAids,List<long> Srcids,List<long> Subids, List<long> StatusIds)
         {
-
 
             IQueryable<SqliteDataLayer.LetterRecord> AllData;
             AllData = (from record in _context.LetterRecords
@@ -65,7 +59,6 @@ namespace RecordTracker.Services
                        select record);
 
             return AllData.ToListAsync();
-
 
         }
 

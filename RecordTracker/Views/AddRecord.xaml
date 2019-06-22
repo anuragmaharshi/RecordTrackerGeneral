@@ -50,7 +50,7 @@
                 </Grid.ColumnDefinitions>
                 <!--Letter no-->
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="Letter Number" Padding="5" />
-                <TextBox Grid.Row="1" Grid.Column="2" Name="LetterNo" Text="{Binding LetterNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Row="1" Grid.Column="2" Name="LetterNo" Text="{Binding Zeus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 
 
@@ -105,7 +105,7 @@
                 </ComboBox>
                 <!--Office Receipt Date-->
                 <TextBlock Grid.Row="3" Grid.Column="3" Text="Office Receipt Date" Padding="5" />
-                <DatePicker Grid.Row="3" Grid.Column="4"  SelectedDate="{Binding OfficeReceiptDate,Mode=TwoWay,TargetNullValue={x:Static system:String.Empty}}" >
+                <DatePicker Grid.Row="3" Grid.Column="4"  SelectedDate="{Binding EndDate,Mode=TwoWay,TargetNullValue={x:Static system:String.Empty}}" >
                     <DatePicker.Resources>
                         <Style TargetType="DatePickerTextBox" >
                             <Setter Property="Control.Template">
@@ -123,7 +123,7 @@
 
                 <!--Office Dispatch Date-->
                 <TextBlock Grid.Row="4" Grid.Column="1" Text="Office Dispatch Date" Padding="5" />
-                <DatePicker Grid.Row="4" Grid.Column="2" SelectedDate="{Binding OfficeDispatchDate,Mode=TwoWay,TargetNullValue={x:Static system:String.Empty}}">
+                <DatePicker Grid.Row="4" Grid.Column="2" SelectedDate="{Binding BeginDate,Mode=TwoWay,TargetNullValue={x:Static system:String.Empty}}">
                     <DatePicker.Resources>
                         <Style TargetType="DatePickerTextBox" >
                             <Setter Property="Control.Template">
@@ -140,7 +140,7 @@
 
                 <!--Office Dispatch Number -->
                 <TextBlock Grid.Row="4" Grid.Column="3" Text="Ofice Dispatch Number" Padding="5" />
-                <TextBox Grid.Row="4" Grid.Column="4"  Text="{Binding OfficeDispatchNumber,Mode=TwoWay}"/>
+                <TextBox Grid.Row="4" Grid.Column="4"  Text="{Binding Hera,Mode=TwoWay}"/>
 
                 <!--Beta-->
                 <TextBlock Grid.Row="5" Grid.Column="1" Text="Beta"  Padding="5"/>
@@ -158,7 +158,7 @@
               
                 <!--PsDispatchDate-->
                 <TextBlock Grid.Row="5" Grid.Column="3" Text="PS Dispatch Date" Padding="5" />
-                <DatePicker Grid.Row="5" Grid.Column="4"  SelectedDate="{Binding PsDispatchDate,Mode=TwoWay,TargetNullValue={x:Static system:String.Empty}}">
+                <DatePicker Grid.Row="5" Grid.Column="4"  SelectedDate="{Binding TargetDate,Mode=TwoWay,TargetNullValue={x:Static system:String.Empty}}">
                     <DatePicker.Resources>
                         <Style TargetType="DatePickerTextBox" >
                             <Setter Property="Control.Template">
@@ -176,25 +176,25 @@
 
                 <!--PS Dispatch Number -->
                 <TextBlock Grid.Row="6" Grid.Column="1" Text="PS Dispatch Number" Padding="5" />
-                <TextBox Grid.Row="6" Grid.Column="2"  Text="{Binding PsDispatchNumber,Mode=TwoWay}"/>
+                <TextBox Grid.Row="6" Grid.Column="2"  Text="{Binding Artemis,Mode=TwoWay}"/>
 
 
                 <!--SanhaDetail -->
                 <TextBlock Grid.Row="6" Grid.Column="3" Text="Sanha Detail" Padding="5" />
-                <TextBox Grid.Row="6" Grid.Column="4"  Text="{Binding SanhaDetail,Mode=TwoWay}"/>
+                <TextBox Grid.Row="6" Grid.Column="4"  Text="{Binding Ares,Mode=TwoWay}"/>
 
                 <!--Verification Detail -->
                 <TextBlock Grid.Row="7" Grid.Column="1" Text="Verification Detail" Padding="5" />
-                <TextBox Grid.Row="7" Grid.Column="2"  Text="{Binding VerificationDetail,Mode=TwoWay}"/>
+                <TextBox Grid.Row="7" Grid.Column="2"  Text="{Binding Athena,Mode=TwoWay}"/>
 
                 <!--Case Number -->
                 <TextBlock Grid.Row="7" Grid.Column="3" Text="Case Number" Padding="5" />
-                <TextBox Grid.Row="7" Grid.Column="4"  Text="{Binding CaseNumber,Mode=TwoWay}"/>
+                <TextBox Grid.Row="7" Grid.Column="4"  Text="{Binding Apollo,Mode=TwoWay}"/>
 
 
                 <!--OrganizationName -->
                 <TextBlock Grid.Row="8" Grid.Column="1" Text="Organization Name" Padding="5" />
-                <TextBox Grid.Row="8" Grid.Column="2"  Text="{Binding OrganizationName,Mode=TwoWay}"/>
+                <TextBox Grid.Row="8" Grid.Column="2"  Text="{Binding Poseidon,Mode=TwoWay}"/>
 
                 <TextBlock Grid.Row="8" Grid.Column="3" Text="State" Padding="5"/>
                 <ListBox Grid.Row="8" Grid.Column="4" IsEnabled="False">
